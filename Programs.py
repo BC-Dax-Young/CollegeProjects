@@ -1,17 +1,24 @@
 
+#==========================={[IMPORTS]}============================
+
+import sys
+import time
+
 #======================{[SELECTOR PROCEDURE]}======================
 
 def selector():
+    global programs
     programs=["Dice Program", "Temperature Converter", "Character Print", "Fishtank Volume", "Carpet Cost", "Energy Bill", "Circle Properties", "Ball Pit" ]
     counter=1
-    print("Available/Allotted Programs: ")
+    print("=======================\nAvailable/Allotted Programs: ")
+    print("=======================")
     for i in programs:
         print(f"{counter}: {i}")
         counter+=1
     while True:
         while True:
             try: 
-                selection=int(input("Enter the list integer number to select the desired program: "))
+                selection=str(input("Enter the list integer number to select the desired program: "))
                 break
             except Exception as error:
                 print(f"Program has encoutered an error: {error}")
@@ -22,12 +29,19 @@ def selector():
 #==================={[PROGRAM SELECTOR PROCEDURE]}===================
 
 def program(selection):
+    try:
+        print(f"Program: {programs[int(selection)-1]}")
+        eval("program"+selection)()
+    except Exception as error:
+        print(f"{error}")
+
+    '''
     if selection==1:
         program1()
     elif selection==2:
         program2()
     elif selection==3:
-        program3()
+        program()
     elif selection==4:
         program4()
     elif selection==5:
@@ -40,7 +54,7 @@ def program(selection):
         program8()
     else:
         print("Error! Selection is not within bounds!")
-
+    '''
 #============================={[PROGRAMS]}==========================
 
 def program1():
