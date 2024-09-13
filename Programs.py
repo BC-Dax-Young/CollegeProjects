@@ -8,10 +8,18 @@ import time
 
 def selector():
     global programs
-    programs=["Dice Program", "Temperature Converter", "Character Print", "Fishtank Volume", "Carpet Cost", "Energy Bill", "Circle Properties", "Ball Pit" ]
+    programs=["Dice Program", 
+              "Temperature Converter", 
+              "Character Print", 
+              "Fishtank Volume", 
+              "Carpet Cost", 
+              "Energy Bill", 
+              "Circle Properties", 
+              "Ball Pit",
+              "Gambling Game"
+              ]
     counter=1
-    print("=======================\nAvailable/Allotted Programs: ")
-    print("=======================")
+    print("=======================\nAvailable/Allotted Programs: \n=======================")
     for i in programs:
         print(f"{counter}: {i}")
         counter+=1
@@ -152,6 +160,35 @@ def program8():
     print(f"The volume of a ball is {(4/3)*3.14*radius**3}")
     print(f"The required amount of balls is {((4/3)*3.14*radius**3)/(4/3)*3.14*radius**3}")
     
+def program9():
+    
+    def chat(message, response):
+        for char in message:
+            time.sleep(0.025)
+            sys.stdout.write(char)
+        if response == 1:
+            res=input("You: ")
+            return res
+        
+    def bj        
+
+    def main():
+        global games
+        games = ["slot machines", "blackjack", "roulette"]
+        age=int(chat("Bouncer: Hey! How old are you?\n", 1))
+        if age < 18:
+            chat("Bouncer: You aren't old enough to go in here!\n", 0)
+        else:
+            chat("Bouncer: Welcome!\n", 0)
+        while True:
+            gamechoice=chat(f"Narrator: You enter the casino; you see a large assortment of varying gambiling games, Roulette, Black-Jack, Slot Machines; you walk over to the:", 1)
+            try:
+                eval(gamechoice)()
+                break
+            except:
+                print("error")
+                continue
+    main()
 #==================================================================
 
 
