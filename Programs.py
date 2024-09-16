@@ -3,6 +3,7 @@
 
 import sys
 import time
+import random
 
 #======================{[SELECTOR PROCEDURE]}======================
 
@@ -170,7 +171,26 @@ def program9():
             res=input("You: ")
             return res
         
-    def bj        
+    def bj():
+        def cardgen(user):
+            card=random.randint(1,15)
+            cardtype=random.randint(1,5)
+            if cardtype==1:
+                cardtype="Hearts"
+            elif cardtype==2:
+                cardtype="Spades"
+            elif cardtype==3:
+                cardtype="Clubs"
+            else:
+                cardtype="Diamonds"
+            if card==1:
+                card="Ace"
+                print(f"You got {card} of {cardtype}")
+            elif card < 11 and card != 1:
+                print(f"You got {card} of {cardtype}")
+            elif card == 11:
+                cardtype="Jack"
+    
 
     def main():
         global games
