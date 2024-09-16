@@ -185,18 +185,28 @@ def program9():
             cardtype="Diamonds"
         if card==1:
             card="Ace"
-            print(f"{user} got dealt {card} of {cardtype}")
+            rt=(f"{user} got dealt {card} of {cardtype}")
+            print(rt)
+            return(rt, card, cardtype)
         elif card < 11 and card != 1:
-            print(f"{user} got dealt {card} of {cardtype}")
+            rt=(f"{user} got dealt {card} of {cardtype}")
+            print(rt)
+            return(rt)
         elif card == 11:
             ct="Jack"
-            print(f"{user} got dealt {ct} of {cardtype}")
+            rt=(f"{user} got dealt {ct} of {cardtype}")
+            print(rt)
+            return(rt, card, cardtype)
         elif card == 12:
             ct="Queen"
-            print(f"{user} got dealt {ct} of {cardtype}")
+            rt=(f"{user} got dealt {ct} of {cardtype}")
+            print(rt)
+            return(rt, card, cardtype)
         elif card == 13:
             ct="King"
-            print(f"{user} got dealt {ct} of {cardtype}")
+            rt=(f"{user} got dealt {ct} of {cardtype}")
+            print(rt)
+            return(rt, card, cardtype)
             
     
 
@@ -218,12 +228,22 @@ def program9():
             gamechoice=chat(f"Narrator: You enter the casino; you see a large assortment of varying gambiling games, Roulette, Black-Jack, Slot Machines; you walk over to the:", 1)
             counter=0
             if "black" in gamechoice:
+                numeric_types = [int, float, complex]
                 usercards=[]
+                enemycards=[]
+                
                 while counter!=2:
+                    cardadd=cardgen("You")
+                    usercards.append(cardadd)
                     counter+=1
-                    usercards.append(cardgen("You"))
-                    for i in usercards:
-                        print(i)
+                counter=0
+                while counter!=2:
+                    cardadd=cardgen("Dealer")
+                    enemycards.append(cardadd)
+                    counter+=1
+                addcards=[x for x in usercards if type(x) in numeric_types]    
+                print(addcards)
+                
     main()
 #==================================================================
 
