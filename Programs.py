@@ -171,43 +171,59 @@ def program9():
             res=input("You: ")
             return res
         
-    def bj():
-        def cardgen(user):
-            card=random.randint(1,15)
-            cardtype=random.randint(1,5)
-            if cardtype==1:
-                cardtype="Hearts"
-            elif cardtype==2:
-                cardtype="Spades"
-            elif cardtype==3:
-                cardtype="Clubs"
-            else:
-                cardtype="Diamonds"
-            if card==1:
-                card="Ace"
-                print(f"You got {card} of {cardtype}")
-            elif card < 11 and card != 1:
-                print(f"You got {card} of {cardtype}")
-            elif card == 11:
-                cardtype="Jack"
+        
+    def cardgen(user):
+        card=random.randint(1,13)
+        cardtype=random.randint(1,4)
+        if cardtype==1:
+            cardtype="Hearts"
+        elif cardtype==2:
+            cardtype="Spades"
+        elif cardtype==3:
+            cardtype="Clubs"
+        elif cardtype==4:
+            cardtype="Diamonds"
+        if card==1:
+            card="Ace"
+            print(f"{user} got dealt {card} of {cardtype}")
+        elif card < 11 and card != 1:
+            print(f"{user} got dealt {card} of {cardtype}")
+        elif card == 11:
+            ct="Jack"
+            print(f"{user} got dealt {ct} of {cardtype}")
+        elif card == 12:
+            ct="Queen"
+            print(f"{user} got dealt {ct} of {cardtype}")
+        elif card == 13:
+            ct="King"
+            print(f"{user} got dealt {ct} of {cardtype}")
+            
     
 
     def main():
         global games
         games = ["slot machines", "blackjack", "roulette"]
-        age=int(chat("Bouncer: Hey! How old are you?\n", 1))
+        while True:
+            try:
+                age=int(chat("Bouncer: Hey! How old are you?\n", 1))
+                break
+            except:
+                chat("Bouncer: Your age can't have numbers in it bud", 0)
+                continue
         if age < 18:
             chat("Bouncer: You aren't old enough to go in here!\n", 0)
         else:
             chat("Bouncer: Welcome!\n", 0)
         while True:
             gamechoice=chat(f"Narrator: You enter the casino; you see a large assortment of varying gambiling games, Roulette, Black-Jack, Slot Machines; you walk over to the:", 1)
-            try:
-                eval(gamechoice)()
-                break
-            except:
-                print("error")
-                continue
+            counter=0
+            if "black" in gamechoice:
+                usercards=[]
+                while counter!=2:
+                    counter+=1
+                    usercards.append(cardgen("You"))
+                    for i in usercards:
+                        print(i)
     main()
 #==================================================================
 
