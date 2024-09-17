@@ -4,6 +4,7 @@
 import sys
 import time
 import random
+import re
 
 #======================{[SELECTOR PROCEDURE]}======================
 
@@ -163,12 +164,12 @@ def program8():
     
 def program9():
     
-    def chat(message, response):
+    def chat(message, response, responder):
         for char in message:
             time.sleep(0.025)
             sys.stdout.write(char)
         if response == 1:
-            res=input("You: ")
+            res=input(f"{responder}: ")
             return res
         
         
@@ -215,17 +216,17 @@ def program9():
         games = ["slot machines", "blackjack", "roulette"]
         while True:
             try:
-                age=int(chat("Bouncer: Hey! How old are you?\n", 1))
+                age=int(chat("Bouncer: Hey! How old are you?\n", 1, "You"))
                 break
             except:
-                chat("Bouncer: Your age can't have numbers in it bud", 0)
+                chat("Bouncer: Your age can't have letters in it bud\n", 0, "You")
                 continue
         if age < 18:
-            chat("Bouncer: You aren't old enough to go in here!\n", 0)
+            chat("Bouncer: You aren't old enough to go in here!\n", 0, "You")
         else:
-            chat("Bouncer: Welcome!\n", 0)
+            chat("Bouncer: Welcome!\n", 0, "You: ")
         while True:
-            gamechoice=chat(f"Narrator: You enter the casino; you see a large assortment of varying gambiling games, Roulette, Black-Jack, Slot Machines; you walk over to the:", 1)
+            gamechoice=chat(f"Narrator: You enter the casino; you see a large assortment of varying gambiling games, Roulette, Black-Jack, Slot Machines; you walk over to the: ", 1, "")
             counter=0
             if "black" in gamechoice:
                 numeric_types = [int, float, complex]
@@ -241,8 +242,9 @@ def program9():
                     cardadd=cardgen("Dealer")
                     enemycards.append(cardadd)
                     counter+=1
-                addcards=[x for x in usercards if type(x) in numeric_types]    
-                print(addcards)
+                char="abcdefghijklmnopqrstuvwxyz"
+                for idx, ele in enumerate(usercards):
+                    usercards[idx] = ele.replace(char, '')
                 
     main()
 #==================================================================
