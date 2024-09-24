@@ -18,7 +18,10 @@ def selector():
               "Energy Bill", 
               "Circle Properties", 
               "Ball Pit",
-              "Gambling Game"
+              "Gambling Game",
+              "Driving Test",
+              "Number Comparitor",
+              "Water States"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -246,7 +249,83 @@ def program9():
                 for idx, ele in enumerate(usercards):
                     usercards[idx] = ele.replace(char, '')
                 
-    main()
+def program10():
+    def getnum(numnum):
+        while True:
+            try:
+                returnval=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error, enter an integer only!")
+                continue
+        return returnval
+
+    num1=getnum(1)
+    num2=getnum(2)
+
+    if num1>num2:
+        print(num1)
+    elif num2>num1:
+        print(num2)
+    else:
+        print("they are the same")
+        
+def program11():
+    def PassFail(MinorFaults):
+        if MinorFaults < 16:
+            return "pass"
+        else:
+            return "fail"
+    print(PassFail(16))
+
+def program12():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+
+    num1=getint(1)
+    num2=getint(2)
+
+    if num1<num2:
+        print(num2)
+    elif num1>num2:
+        print(num1)
+    else:
+        print("They are the same")
+
+def program13():
+    def getint():
+        while True:
+            try:
+                getint=int(input(f"Enter Temperature: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+
+    temp=getint()
+
+    if temp>100:
+        print("Gas")
+    elif temp<100 and temp>0:
+        print("Liquid")
+    else:
+        print("Solid")
+
+def program14():
+    job=input("Job: ").lower()
+    if job=="engineer":
+        print("The engineer has been, and is, a maker of history.")
+    elif job=="developer":
+
+
 #==================================================================
 
 
