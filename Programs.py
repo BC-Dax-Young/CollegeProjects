@@ -1,7 +1,7 @@
 
 #==========================={[IMPORTS]}============================
 
-from math import hypot
+import numpy as np
 import sys
 import time
 import random
@@ -28,7 +28,13 @@ def selector():
               "Nitrate Problem",
               "Exam Grade",
               "Periodic Table",
-              "Day Format"
+              "Day Format",
+              "Save the Change",
+              "Dice",
+              "Clamp",
+              "Leap Year",
+              "Days",
+              "Dice Game"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -413,20 +419,123 @@ def program18():
     value=input("Enter day:").title()
     if value in day:
         daypos=day.index(value)
-        print(day[daypos])
         print(shortday[daypos])
         print(char[daypos])
     elif value in shortday:
         daypos=day.index(value)
         print(day[daypos])
-        print(shortday[daypos])
         print(char[daypos])
     elif value in char:
         daypos=day.index(value)
         print(day[daypos])
         print(shortday[daypos])
-        print(char[daypos])
 
+def program19():
+    def getfloat(numnum):
+        while True:
+            try:
+                getint=float(input(f"Enter Cost {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+
+    purchasecost=getfloat("")
+    rounded=np.ceil(purchasecost)
+    diff=rounded-purchasecost
+    print(f"Item cost: {purchasecost},\nPaid Amount: {rounded},\n Saved to Savings: {diff}")
+
+def program20():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+    die=getint("of faces")
+    print(f"Your {die} sided die rolled a {random.randint(1,die)}")
+
+def program21():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+    def clamp():
+        num1=getint(1)
+        num2=getint(2)
+
+        if num1<num2:
+            print(num2)
+        elif num1>num2:
+            print(num1)
+        else:
+            print(num1)
+    clamp()
+
+def program22():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+    year=getint("")
+    if year % 4 == 0 or year % 400 == 0 and year %100 != 0:
+        print(f"{year} is a leap year!")
+    else:
+       print(f"{year} is not a leap year.")
+
+def program23():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+    day=getint("")
+    print(day//24)
+
+def program24():
+    input("Roll dice one?")
+    dice1=random.randint(1,6)
+    print(dice1)
+    input("Roll dice two?")
+    dice2=random.randint(1,6)
+    print(dice2)
+    input("Roll dice three?")
+    dice3=random.randint(1,6)
+    print(dice3)
+    def scoredice(d1,d2,d3):
+        if d1==d2==d3:
+            score=d1+d2+d3
+        elif d1==d2:
+            score=d1+d2
+            score-=d3
+        elif d3==d2:
+            score=d2+d3
+            score-=d1
+        elif d1==d3:
+            score=d1+d3
+            score-=d2
+        else:
+            score=0
+        return score
+    print(scoredice(dice1,dice2,dice3))
 
 
 #==================================================================
