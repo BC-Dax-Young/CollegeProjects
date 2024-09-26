@@ -7,6 +7,28 @@ import time
 import random
 import bisect 
 
+#======================{[SHARED SUBROUTINES]}======================
+
+def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+
+def getfloat(numnum):
+        while True:
+            try:
+                getfloat=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getfloat
+
 #======================{[SELECTOR PROCEDURE]}======================
 
 def selector():
@@ -34,7 +56,15 @@ def selector():
               "Clamp",
               "Leap Year",
               "Days",
-              "Dice Game"
+              "Dice Game",
+              "Division",
+              "Dogs life",
+              "Electric Car",
+              "Twitter",
+              "Initial and Surname",
+              "Inventory ",
+              "Flight",
+              "Teacher Code"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -179,88 +209,7 @@ def program8():
     print(f"The required amount of balls is {((4/3)*3.14*radius**3)/(4/3)*3.14*radius**3}")
     
 def program9():
-    
-    def chat(message, response, responder):
-        for char in message:
-            time.sleep(0.025)
-            sys.stdout.write(char)
-        if response == 1:
-            res=input(f"{responder}: ")
-            return res
-        
-        
-    def cardgen(user):
-        card=random.randint(1,13)
-        cardtype=random.randint(1,4)
-        if cardtype==1:
-            cardtype="Hearts"
-        elif cardtype==2:
-            cardtype="Spades"
-        elif cardtype==3:
-            cardtype="Clubs"
-        elif cardtype==4:
-            cardtype="Diamonds"
-        if card==1:
-            card="Ace"
-            rt=(f"{user} got dealt {card} of {cardtype}")
-            print(rt)
-            return(rt, card, cardtype)
-        elif card < 11 and card != 1:
-            rt=(f"{user} got dealt {card} of {cardtype}")
-            print(rt)
-            return(rt)
-        elif card == 11:
-            ct="Jack"
-            rt=(f"{user} got dealt {ct} of {cardtype}")
-            print(rt)
-            return(rt, card, cardtype)
-        elif card == 12:
-            ct="Queen"
-            rt=(f"{user} got dealt {ct} of {cardtype}")
-            print(rt)
-            return(rt, card, cardtype)
-        elif card == 13:
-            ct="King"
-            rt=(f"{user} got dealt {ct} of {cardtype}")
-            print(rt)
-            return(rt, card, cardtype)
-            
-    
-
-    def main():
-        global games
-        games = ["slot machines", "blackjack", "roulette"]
-        while True:
-            try:
-                age=int(chat("Bouncer: Hey! How old are you?\n", 1, "You"))
-                break
-            except:
-                chat("Bouncer: Your age can't have letters in it bud\n", 0, "You")
-                continue
-        if age < 18:
-            chat("Bouncer: You aren't old enough to go in here!\n", 0, "You")
-        else:
-            chat("Bouncer: Welcome!\n", 0, "You: ")
-        while True:
-            gamechoice=chat(f"Narrator: You enter the casino; you see a large assortment of varying gambiling games, Roulette, Black-Jack, Slot Machines; you walk over to the: ", 1, "")
-            counter=0
-            if "black" in gamechoice:
-                numeric_types = [int, float, complex]
-                usercards=[]
-                enemycards=[]
-                
-                while counter!=2:
-                    cardadd=cardgen("You")
-                    usercards.append(cardadd)
-                    counter+=1
-                counter=0
-                while counter!=2:
-                    cardadd=cardgen("Dealer")
-                    enemycards.append(cardadd)
-                    counter+=1
-                char="abcdefghijklmnopqrstuvwxyz"
-                for idx, ele in enumerate(usercards):
-                    usercards[idx] = ele.replace(char, '')
+    pass 
         
 def program10():
     def PassFail(MinorFaults):
@@ -271,15 +220,6 @@ def program10():
     print(PassFail(16))
 
 def program11():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
 
     num1=getint(1)
     num2=getint(2)
@@ -292,16 +232,6 @@ def program11():
         print("They are the same")
 
 def program12():
-    def getint():
-        while True:
-            try:
-                getint=int(input(f"Enter Temperature: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
-
     temp=getint()
 
     if temp>100:
@@ -323,15 +253,6 @@ def program13():
         print("I'm sorry. We could not find a quote for your job.")
 
 def program14():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
 
     currency=input("Enter Currency, GBP to USD, Euro, Yuan or Yen: ").lower()
     amount=getint("")
@@ -347,15 +268,6 @@ def program14():
         print("Invalid Currency")
 
 def program15():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
     def dose():
         doseage=getint("")
         if doseage>10:
@@ -373,15 +285,6 @@ def program15():
     dose()
 
 def program16():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
     def determine_grade(scores, breakpoints=[1,2,4,13,22,31,41,54,67,80], grades='U123456789'):
         while True:
             try:
@@ -431,16 +334,6 @@ def program18():
         print(shortday[daypos])
 
 def program19():
-    def getfloat(numnum):
-        while True:
-            try:
-                getint=float(input(f"Enter Cost {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
-
     purchasecost=getfloat("")
     rounded=np.ceil(purchasecost)
     diff=rounded-purchasecost
@@ -460,15 +353,6 @@ def program20():
     print(f"Your {die} sided die rolled a {random.randint(1,die)}")
 
 def program21():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
     def clamp():
         num1=getint(1)
         num2=getint(2)
@@ -482,15 +366,6 @@ def program21():
     clamp()
 
 def program22():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
     year=getint("")
     if year % 4 == 0 or year % 400 == 0 and year %100 != 0:
         print(f"{year} is a leap year!")
@@ -498,15 +373,6 @@ def program22():
        print(f"{year} is not a leap year.")
 
 def program23():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
     day=getint("")
     print(day//24)
 
@@ -537,7 +403,72 @@ def program24():
         return score
     print(scoredice(dice1,dice2,dice3))
 
+def program25():
 
+    def div(val1,val2):
+        if val1 == 0 or val2 == 0:
+            return False
+        elif val1 % val2 == 0:
+            return True
+        else:
+            return False
+
+    div(getint(""),getint(""))
+
+def program26():
+    age=getint("")
+    if age <= 2:
+        print(f"Your dog is {age*12} years old.")
+    elif age > 2:
+        print(f"Your dog is {24+(age*6)-2}")
+
+def program27():
+    time=getint("of minutes to charge")
+    points=1.5*time
+    price=1+(float(0.2)*time)
+    print(f"You owe ${price} and earned {points} points")
+
+def program28():
+    while True:
+        tweet=input("Tweet: ")
+        if len(tweet) > 20:
+            print("Tweet Exceeds maximum character limit!")
+        else:
+            print(tweet)
+
+def program29():
+    forename=input("Enter Forename: ")
+    surname=input("Enter Surname: ")
+    print(forename[0].upper(),surname.upper())
+
+def program30():
+    def exists(inv, check):
+        if any(x in inv for x in check)==True:
+            print(True)
+        else:
+            print(False)
+    plrinv=["Sword" "Shield", "Potion", "Amulet"]
+    invcheck= ["Shield", "Potion", "Charm" ,"Bow"]
+    exists(plrinv,invcheck)
+
+def program31():
+    city1=input()
+    city2=input()
+    flight=city1[0:4].upper()+"-"+city2[0:4].upper()
+    print(flight)
+
+def program32():
+    dax=["Dax","Aleckzander","Young"]
+    ebony=["Ebony-Jayne","Sapphire","Davies-Waterhouse"]
+    filip=["Filip","Z","Twink"]
+    def abbreviate(list):
+        value=list[0][0]+list[1][0]+list[2][0]
+        print(value)
+
+    abbreviate(dax)
+    abbreviate(ebony)
+    abbreviate(filip)
+            
 #==================================================================
 
 
