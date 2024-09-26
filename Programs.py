@@ -1,6 +1,7 @@
 
 #==========================={[IMPORTS]}============================
 
+from math import hypot
 import sys
 import time
 import random
@@ -25,7 +26,9 @@ def selector():
               "Career Quotes",
               "Currency Converter",
               "Nitrate Problem",
-              "Exam Grade"
+              "Exam Grade",
+              "Periodic Table",
+              "Day Format"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -256,9 +259,9 @@ def program9():
 def program10():
     def PassFail(MinorFaults):
         if MinorFaults < 16:
-            return "pass"
-        else:
             return "fail"
+        else:
+            return "pass"
     print(PassFail(16))
 
 def program11():
@@ -364,12 +367,67 @@ def program15():
     dose()
 
 def program16():
-    def determine_grade(scores, breakpoints=[50, 60, 70, 80, 90], grades='FEDCBA'):
-        i = f"{bisect.bisect(breakpoints, scores)}"
-        return grades[i]
-    print(determine_grade(10))
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+    def determine_grade(scores, breakpoints=[1,2,4,13,22,31,41,54,67,80], grades='U123456789'):
+        while True:
+            try:
+                i = bisect.bisect(breakpoints, scores)
+                return grades[i], breakpoints[int(grades[i])]-scores
+                break
+            except:
+                continue
+    grade=getint("")
+    dtrgrade, needed =determine_grade(grade)
+    print(f"You got a grade {dtrgrade}, you need {needed} more points.")
 
 def program17():
+    Hydrogen=["Hydrogen", "H", 1, 1.0078]
+    Lithium=["Lithium", "Li", 3, 6.9410]
+    Beryllium=["Berylium", "Be", 4, 1.0078]
+    element=input("Enter the element: ")
+    if element in Hydrogen:
+        print("Hydrogren Info:")
+        for i in Hydrogen:
+            print(i)
+    elif element in Lithium:
+        print("Hydrogren Info:")
+        for i in Lithium:
+            print(i)
+    elif element in Beryllium:
+        print("Beryllium Info:")
+        for i in Beryllium:
+            print(i)
+
+def program18():
+    day=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    shortday=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    char=["M", "Tu", "W", "Th", "F", "Sa", "Su"]
+    value=input("Enter day:").title()
+    if value in day:
+        daypos=day.index(value)
+        print(day[daypos])
+        print(shortday[daypos])
+        print(char[daypos])
+    elif value in shortday:
+        daypos=day.index(value)
+        print(day[daypos])
+        print(shortday[daypos])
+        print(char[daypos])
+    elif value in char:
+        daypos=day.index(value)
+        print(day[daypos])
+        print(shortday[daypos])
+        print(char[daypos])
+
+
 
 #==================================================================
 
