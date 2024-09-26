@@ -4,7 +4,7 @@
 import sys
 import time
 import random
-import re
+import bisect 
 
 #======================{[SELECTOR PROCEDURE]}======================
 
@@ -21,7 +21,11 @@ def selector():
               "Gambling Game",
               "Driving Test",
               "Number Comparitor",
-              "Water States"
+              "Water States",
+              "Career Quotes",
+              "Currency Converter",
+              "Nitrate Problem",
+              "Exam Grade"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -248,29 +252,8 @@ def program9():
                 char="abcdefghijklmnopqrstuvwxyz"
                 for idx, ele in enumerate(usercards):
                     usercards[idx] = ele.replace(char, '')
-                
-def program10():
-    def getnum(numnum):
-        while True:
-            try:
-                returnval=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error, enter an integer only!")
-                continue
-        return returnval
-
-    num1=getnum(1)
-    num2=getnum(2)
-
-    if num1>num2:
-        print(num1)
-    elif num2>num1:
-        print(num2)
-    else:
-        print("they are the same")
         
-def program11():
+def program10():
     def PassFail(MinorFaults):
         if MinorFaults < 16:
             return "pass"
@@ -278,7 +261,7 @@ def program11():
             return "fail"
     print(PassFail(16))
 
-def program12():
+def program11():
     def getint(numnum):
         while True:
             try:
@@ -299,7 +282,7 @@ def program12():
     else:
         print("They are the same")
 
-def program13():
+def program12():
     def getint():
         while True:
             try:
@@ -319,12 +302,74 @@ def program13():
     else:
         print("Solid")
 
-def program14():
+def program13():
     job=input("Job: ").lower()
     if job=="engineer":
         print("The engineer has been, and is, a maker of history.")
     elif job=="developer":
+        print("Logical thinking, passion and perseverance is the paint on your palette.")
+    elif job=="analyst":
+        print("Seeing what other people can`t see gives you great vision.")
+    else:
+        print("I'm sorry. We could not find a quote for your job.")
 
+def program14():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+
+    currency=input("Enter Currency, GBP to USD, Euro, Yuan or Yen: ").lower()
+    amount=getint("")
+    if currency=="usd":
+        print(f"{amount} GBP = {amount*1.35} USD")
+    elif currency=="euro":
+        print(f"{amount} GBP = {amount*1.20} Euro")
+    elif currency=="yuan":
+        print(f"{amount} GBP = {amount*9.37} Yuan")
+    elif currency=="euro":
+        print(f"{amount} GBP = {amount*193.26} Yen")
+    else:
+        print("Invalid Currency")
+
+def program15():
+    def getint(numnum):
+        while True:
+            try:
+                getint=int(input(f"Enter Number {numnum}: "))
+                break
+            except:
+                print("Error enter integers only!")
+                continue
+        return getint
+    def dose():
+        doseage=getint("")
+        if doseage>10:
+            val= 3
+        else:
+            if doseage>2.5:
+                val= 2
+            else:
+                if doseage>1:
+                    val= 1
+                else:
+                    val= 0.5
+        print(f"For {doseage} nitrate dose {val} ml")
+        
+    dose()
+
+def program16():
+    def determine_grade(scores, breakpoints=[50, 60, 70, 80, 90], grades='FEDCBA'):
+        i = f"{bisect.bisect(breakpoints, scores)}"
+        return grades[i]
+    print(determine_grade(10))
+
+def program17():
 
 #==================================================================
 
