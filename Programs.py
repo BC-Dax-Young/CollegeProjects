@@ -1,6 +1,7 @@
 
 #==========================={[IMPORTS]}============================
 
+from socket import EAI_BADFLAGS
 import numpy as np
 import sys
 import time
@@ -65,7 +66,10 @@ def selector():
               "Initial and Surname",
               "Inventory ",
               "Flight",
-              "Teacher Code"
+              "Teacher Code",
+              "Email",
+              "Seperator",
+              "Ascii EBCDIC"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -209,10 +213,8 @@ def program8():
     print(f"The volume of a ball is {(4/3)*3.14*radius**3}")
     print(f"The required amount of balls is {((4/3)*3.14*radius**3)/(4/3)*3.14*radius**3}")
     
-def program9():
-    pass 
         
-def program10():
+def program9():
     def PassFail(MinorFaults):
         if MinorFaults < 16:
             return "fail"
@@ -220,7 +222,7 @@ def program10():
             return "pass"
     print(PassFail(16))
 
-def program11():
+def program10():
 
     num1=getint(1)
     num2=getint(2)
@@ -232,7 +234,7 @@ def program11():
     else:
         print("They are the same")
 
-def program12():
+def program11():
     temp=getint()
 
     if temp>100:
@@ -242,7 +244,7 @@ def program12():
     else:
         print("Solid")
 
-def program13():
+def program12():
     job=input("Job: ").lower()
     if job=="engineer":
         print("The engineer has been, and is, a maker of history.")
@@ -253,7 +255,7 @@ def program13():
     else:
         print("I'm sorry. We could not find a quote for your job.")
 
-def program14():
+def program13():
 
     currency=input("Enter Currency, GBP to USD, Euro, Yuan or Yen: ").lower()
     amount=getint("")
@@ -268,7 +270,7 @@ def program14():
     else:
         print("Invalid Currency")
 
-def program15():
+def program14():
     def dose():
         doseage=getint("")
         if doseage>10:
@@ -285,7 +287,7 @@ def program15():
         
     dose()
 
-def program16():
+def program15():
     def determine_grade(scores, breakpoints=[1,2,4,13,22,31,41,54,67,80], grades='U123456789'):
         while True:
             try:
@@ -298,7 +300,7 @@ def program16():
     dtrgrade, needed =determine_grade(grade)
     print(f"You got a grade {dtrgrade}, you need {needed} more points.")
 
-def program17():
+def program16():
     Hydrogen=["Hydrogen", "H", 1, 1.0078]
     Lithium=["Lithium", "Li", 3, 6.9410]
     Beryllium=["Berylium", "Be", 4, 1.0078]
@@ -316,7 +318,7 @@ def program17():
         for i in Beryllium:
             print(i)
 
-def program18():
+def program17():
     day=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     shortday=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     char=["M", "Tu", "W", "Th", "F", "Sa", "Su"]
@@ -334,17 +336,17 @@ def program18():
         print(day[daypos])
         print(shortday[daypos])
 
-def program19():
+def program18():
     purchasecost=getfloat("")
     rounded=np.ceil(purchasecost)
     diff=rounded-purchasecost
     print(f"Item cost: {purchasecost},\nPaid Amount: {rounded},\n Saved to Savings: {diff}")
 
-def program20():
+def program19():
     die=getint("of faces")
     print(f"Your {die} sided die rolled a {random.randint(1,die)}")
 
-def program21():
+def program20():
     def clamp():
         num1=getint(1)
         num2=getint(2)
@@ -357,18 +359,18 @@ def program21():
             print(num1)
     clamp()
 
-def program22():
+def program21():
     year=getint("")
     if year % 4 == 0 or year % 400 == 0 and year %100 != 0:
         print(f"{year} is a leap year!")
     else:
        print(f"{year} is not a leap year.")
 
-def program23():
+def program22():
     day=getint("")
     print(day//24)
 
-def program24():
+def program23():
     input("Roll dice one?")
     dice1=random.randint(1,6)
     print(dice1)
@@ -395,7 +397,7 @@ def program24():
         return score
     print(scoredice(dice1,dice2,dice3))
 
-def program25():
+def program24():
 
     def div(val1,val2):
         if val1 == 0 or val2 == 0:
@@ -407,20 +409,20 @@ def program25():
 
     div(getint(""),getint(""))
 
-def program26():
+def program25():
     age=getint("")
     if age <= 2:
         print(f"Your dog is {age*12} years old.")
     elif age > 2:
         print(f"Your dog is {24+(age*6)-2}")
 
-def program27():
+def program26():
     time=getint("of minutes to charge")
     points=1.5*time
     price=1+(float(0.2)*time)
     print(f"You owe ${price} and earned {points} points")
 
-def program28():
+def program27():
     while True:
         tweet=input("Tweet: ")
         if len(tweet) > 20:
@@ -428,12 +430,12 @@ def program28():
         else:
             print(tweet)
 
-def program29():
+def program28():
     forename=input("Enter Forename: ")
     surname=input("Enter Surname: ")
     print(forename[0].upper(),surname.upper())
 
-def program30():
+def program29():
     def exists(inv, check):
         if any(x in inv for x in check)==True:
             print(True)
@@ -443,13 +445,13 @@ def program30():
     invcheck= ["Shield", "Potion", "Charm" ,"Bow"]
     exists(plrinv,invcheck)
 
-def program31():
+def program30():
     city1=input()
     city2=input()
     flight=city1[0:4].upper()+"-"+city2[0:4].upper()
     print(flight)
 
-def program32():
+def program31():
     dax=["Dax","Aleckzander","Young"]
     ebony=["Ebony-Jayne","Sapphire","Davies-Waterhouse"]
     filip=["Filip"," ","Trzcinski"]
@@ -466,11 +468,53 @@ def program32():
     abbreviate(ebony)
     abbreviate(filip)
 
+def program32():
+    email=input("Enter email: ")
+    if "@" in email and "." in email:
+        print("Email Valid")
+    else:
+        print("Email Invalid")
+
 def program33():
-
-
-
+    name=input("Enter name:").title()
+    split=name.split()
+    for i in split:
+        print(i.title())
             
+def program34():
+    dictionary={
+        "A":"Ascii: 65\n EBCDIC:193",
+        "B":"Ascii: 66\n EBCDIC:194",
+        "C":"Ascii: 67\n EBCDIC:195",
+        "D":"Ascii: 68\n EBCDIC:196",
+        "E":"Ascii: 69\n EBCDIC:197",
+        "F":"Ascii: 70\n EBCDIC:198",
+        "G":"Ascii: 71\n EBCDIC:199",
+        "H":"Ascii: 72\n EBCDIC:200",
+        "I":"Ascii: 73\n EBCDIC:201",
+        "J":"Ascii: 74\n EBCDIC:209",
+        "K":"Ascii: 75\n EBCDIC:210",
+        "L":"Ascii: 76\n EBCDIC:211",
+        "M":"Ascii: 77\n EBCDIC:212",
+        "N":"Ascii: 78\n EBCDIC:213",
+        "O":"Ascii: 79\n EBCDIC:214",
+        "P":"Ascii: 80\n EBCDIC:215",
+        "Q":"Ascii: 81\n EBCDIC:216",
+        "R":"Ascii: 82\n EBCDIC:217",
+        "S":"Ascii: 83\n EBCDIC:226",
+        "T":"Ascii: 84\n EBCDIC:227",
+        "U":"Ascii: 85\n EBCDIC:228",
+        "V":"Ascii: 86\n EBCDIC:229",
+        "W":"Ascii: 87\n EBCDIC:230",
+        "X":"Ascii: 88\n EBCDIC:231",
+        "Y":"Ascii: 89\n EBCDIC:232",
+        "Z":"Ascii: 90\n EBCDIC:233",
+        " ":"Ascii: 32\n EBCDIC:64"
+        }
+
+    lookup=input("Enter Letter to lookup: ").upper()
+    print(dictionary[lookup])
+
 #==================================================================
 
 
