@@ -6,6 +6,7 @@ import sys
 import time
 import random
 import bisect 
+import re
 
 #======================{[SHARED SUBROUTINES]}======================
 
@@ -340,15 +341,6 @@ def program19():
     print(f"Item cost: {purchasecost},\nPaid Amount: {rounded},\n Saved to Savings: {diff}")
 
 def program20():
-    def getint(numnum):
-        while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
     die=getint("of faces")
     print(f"Your {die} sided die rolled a {random.randint(1,die)}")
 
@@ -460,7 +452,12 @@ def program31():
 def program32():
     dax=["Dax","Aleckzander","Young"]
     ebony=["Ebony-Jayne","Sapphire","Davies-Waterhouse"]
-    filip=["Filip","Z","Twink"]
+    filip=["Filip"," ","Trzcinski"]
+    if " " in filip:
+        pos=filip.index(" ")
+        filiptrz=filip[2]
+        filip.insert(pos,"Z")
+        filip.insert(pos+1,filiptrz)
     def abbreviate(list):
         value=list[0][0]+list[1][0]+list[2][0]
         print(value)
@@ -468,9 +465,13 @@ def program32():
     abbreviate(dax)
     abbreviate(ebony)
     abbreviate(filip)
+
+def program33():
+
+
+
             
 #==================================================================
-
 
 
 selector()
