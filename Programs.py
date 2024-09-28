@@ -1,7 +1,6 @@
 
 #==========================={[IMPORTS]}============================
 
-from socket import EAI_BADFLAGS
 import numpy as np
 import sys
 import time
@@ -11,25 +10,38 @@ import re
 
 #======================{[SHARED SUBROUTINES]}======================
 
-def getint(numnum):
+def getinput(message, inp):
         while True:
-            try:
-                getint=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getint
+            if inp=="int":
+                try:
+                    response=int(input(f"{message}: "))
+                    break
+                except:
+                    print("Error enter integers only!")
+                    continue
+            elif inp=="float":
+                try:
+                    response=float(input(f"{message}: "))
+                    break
+                except:
+                    print("Error enter floats only!")
+                    continue
+            elif inp=="str":
+                try:
+                    response=str(input(f"{message}: "))
+                    break
+                except:
+                    print("Error enter strings only!")
+                    continue
+        return response
 
-def getfloat(numnum):
-        while True:
-            try:
-                getfloat=int(input(f"Enter Number {numnum}: "))
-                break
-            except:
-                print("Error enter integers only!")
-                continue
-        return getfloat
+def typeout(message, response_wanted, responder):
+    for char in message:
+        time.sleep(0.0125)
+        sys.stdout.write(char)
+    if response_wanted==1:
+        return getinput(f"{responder}: ", "str")
+
 
 #======================{[SELECTOR PROCEDURE]}======================
 
@@ -224,8 +236,8 @@ def program9():
 
 def program10():
 
-    num1=getint(1)
-    num2=getint(2)
+    num1=getinput("Enter Number 1: ", "int")
+    num2=getinput("Enter Number 2: ", "int")
 
     if num1<num2:
         print(num2)
@@ -235,7 +247,7 @@ def program10():
         print("They are the same")
 
 def program11():
-    temp=getint()
+    temp=getinput("Temperature",0)
 
     if temp>100:
         print("Gas")
@@ -258,7 +270,7 @@ def program12():
 def program13():
 
     currency=input("Enter Currency, GBP to USD, Euro, Yuan or Yen: ").lower()
-    amount=getint("")
+    amount=getinput("Enter amount: ", "int")
     if currency=="usd":
         print(f"{amount} GBP = {amount*1.35} USD")
     elif currency=="euro":
@@ -272,7 +284,7 @@ def program13():
 
 def program14():
     def dose():
-        doseage=getint("")
+        doseage=getinput("Enter dosage: ", "int")
         if doseage>10:
             val= 3
         else:
@@ -296,7 +308,7 @@ def program15():
                 break
             except:
                 continue
-    grade=getint("")
+    grade=getinput("Enter Grade: ", "int")
     dtrgrade, needed =determine_grade(grade)
     print(f"You got a grade {dtrgrade}, you need {needed} more points.")
 
@@ -337,19 +349,19 @@ def program17():
         print(shortday[daypos])
 
 def program18():
-    purchasecost=getfloat("")
+    purchasecost=getinput("Enter Cost", "float")
     rounded=np.ceil(purchasecost)
     diff=rounded-purchasecost
     print(f"Item cost: {purchasecost},\nPaid Amount: {rounded},\n Saved to Savings: {diff}")
 
 def program19():
-    die=getint("of faces")
+    die=getinput("How many sides to your die?: ", "int")
     print(f"Your {die} sided die rolled a {random.randint(1,die)}")
 
 def program20():
     def clamp():
-        num1=getint(1)
-        num2=getint(2)
+        num1=getinput("Enter Number 1: ", "int")
+        num2=getinput("Enter Number 2: ", "int")
 
         if num1<num2:
             print(num2)
@@ -360,14 +372,14 @@ def program20():
     clamp()
 
 def program21():
-    year=getint("")
+    year=getinput("Enter year: ", "int")
     if year % 4 == 0 or year % 400 == 0 and year %100 != 0:
         print(f"{year} is a leap year!")
     else:
        print(f"{year} is not a leap year.")
 
 def program22():
-    day=getint("")
+    day=getinput("Enter Number of days: ", "int")
     print(day//24)
 
 def program23():
@@ -407,17 +419,17 @@ def program24():
         else:
             return False
 
-    div(getint(""),getint(""))
+    div(getinput("Enter Number 1: ", "int"),getinput("Enter Number 2: ", "int"))
 
 def program25():
-    age=getint("")
+    age=getinput("Enter age: ", "int")
     if age <= 2:
         print(f"Your dog is {age*12} years old.")
     elif age > 2:
         print(f"Your dog is {24+(age*6)-2}")
 
 def program26():
-    time=getint("of minutes to charge")
+    time=getinput("Enter number of minutes parked: ", "int")
     points=1.5*time
     price=1+(float(0.2)*time)
     print(f"You owe ${price} and earned {points} points")
@@ -514,6 +526,58 @@ def program34():
 
     lookup=input("Enter Letter to lookup: ").upper()
     print(dictionary[lookup])
+
+def program35():
+    #
+    def printstats():
+        typeout(f"You have {paperclips} Paper Clips", 0, "")
+        typeout(f"You have {money} Dollars ", 0, "")
+        typeout(f"You have sold {sold} Paper Clips", 0, "")
+        typeout(f"You have {robots} Robots making Paper Clips", 0, "")
+    #
+    def makepaperclip():
+        robotpc()
+        var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", 1, "You")
+        if "exit" in var:
+            return ""
+        paperclips+=paperclipsper
+        return ""
+        
+    #
+    def buyrobot():
+        robot+=1
+        typeout("Robot Purchased", 0, "")
+        robotpc()
+    #
+    def robotpc():
+        if robots!=0:
+            paperclips+=paperclipsper
+
+    typeout("Welcome to Paperclip game!", 0, "")
+    time.sleep(1)
+    typeout("Press any key to start!", 1, "")
+    global paperclipsper
+    global paperclips
+    global money
+    global sold
+    global robots
+    paperclipsper=1
+    paperclips=0
+    money=500
+    sold=0
+    robots=0
+    printstats()
+    while True:
+        choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot, ", 1, "str")
+        if "1" in choice:
+            makepaperclip()
+        elif "2" in choice:
+            buyrobot()
+        elif "3" in choice:
+
+        
+
+
 
 #==================================================================
 
