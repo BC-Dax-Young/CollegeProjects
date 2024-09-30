@@ -7,7 +7,6 @@ import time
 import random
 import bisect 
 import re
-
 #======================{[SHARED SUBROUTINES]}======================
 
 def getinput(message, inp):
@@ -21,14 +20,14 @@ def getinput(message, inp):
                     continue
             elif inp=="float":
                 try:
-                    response=float(input(f"{message} "))
+                    response=float(input(f"{message}"))
                     break
                 except:
                     print("Error enter floats only!")
                     continue
             elif inp=="str":
                 try:
-                    response=str(input(f"{message} "))
+                    response=str(input(f"{message}"))
                     break
                 except:
                     print("Error enter strings only!")
@@ -422,7 +421,7 @@ def program24():
     div(getinput("Enter Number 1: ", "int"),getinput("Enter Number 2: ", "int"))
 
 def program25():
-    age=getinput("Enter age: ", "int")
+    age=getinput("Enter age: ", "float")
     if age <= 2:
         print(f"Your dog is {age*12} years old.")
     elif age > 2:
@@ -528,6 +527,82 @@ def program34():
     print(dictionary[lookup])
 
 def program35():
+    print("======================================================")
+
+    #
+    def printstats():
+        global paperclipsper
+        global paperclips
+        global money
+        global sold
+        global robots
+        typeout(f"You have {paperclips} Paper Clips\n", 0, "")
+        typeout(f"You have {money} Dollars\n", 0, "")
+        typeout(f"You have sold {sold} Paper Clips\n", 0, "")
+        typeout(f"You have {robots} Robots making Paper Clips\n", 0, "")
+    #
+    def makepaperclip():
+        global paperclipsper
+        global paperclips
+        global money
+        global sold
+        global robots
+        while True:
+            robotpc()
+            var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
+            if "exit" not in var:
+
+                money=money-2
+                paperclips+=paperclipsper
+                print(f"Made {paperclipsper} Paper Clips for $2.")
+                continue
+            else:
+                print("======================================================")
+                break
+        
+    #
+    def buyrobot():
+        global paperclipsper
+        global paperclips
+        global money
+        global sold
+        global robots
+        robots+=1
+        typeout("Robot Purchased\n", 0, "")
+        robotpc()
+        print("======================================================")
+    #
+    def robotpc():
+        global paperclipsper
+        global paperclips
+        global money
+        global sold
+        global robots
+        if robots!=0:
+            paperclips+=paperclipsper
+            money=money-2
+
+    def upgrade():
+        global paperclipsper
+        global paperclips
+        global money
+        global sold
+        global robots
+        robotpc()
+        if money >= 50:
+            paperclipsper+=1
+            money-=50
+            print("Upgrade Purchased")
+        else:
+            print("Insufficient Funds")
+            print("======================================================")
+
+        
+
+    typeout("Welcome to Paperclip game!\n", 0, "")
+    time.sleep(1)
+    typeout("Press enter to start!", 1, "")
+    print("======================================================")
     global paperclipsper
     global paperclips
     global money
@@ -538,62 +613,31 @@ def program35():
     money=500
     sold=0
     robots=0
-    #
-    def printstats():
-        typeout(f"You have {paperclips} Paper Clips\n", 0, "")
-        typeout(f"You have {money} Dollars\n", 0, "")
-        typeout(f"You have sold {sold} Paper Clips\n", 0, "")
-        typeout(f"You have {robots} Robots making Paper Clips\n", 0, "")
-    #
-    def makepaperclip(money, paperclips, paperclipsper):
-        while True:
-            robotpc(robots,paperclips,paperclipsper,money)
-            var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
-            if "exit" not in var:
-                
-                paperclips+=paperclipsper
-                print(f"Made {paperclipsper} Paper Clips.")
-                continue
-            else:
-                break
-        
-    #
-    def buyrobot(robots):
-        robot+=1
-        typeout("Robot Purchased", 0, "")
-        robotpc(robots,paperclips,paperclipsper,money)
-    #
-    def robotpc(robots,paperclips,paperclipsper,money):
-        if robots!=0:
-            paperclips+=paperclipsper
-            money=money-2
-    def upgrade(paperclips,paperclipsper, money):
-        robotpc(robots,paperclips,paperclipsper,money)
-        if money <= 50:
-            paperclipsper+=1
-            money-=50
-            print("Upgrade Purchased")
-        else:
-            print("Insufficient Funds")
-        
-
-    typeout("Welcome to Paperclip game!\n", 0, "")
-    time.sleep(1)
-    typeout("Press any key to start!\n", 1, "")
-
     printstats()
+    print("======================================================")
     while True:
-        choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade\nChoice: ", "str")
+        if paperclips!=0:
+            sell=random.randint(1,paperclips)
+            paperclips=paperclips-sell
+            money=money+(sell*4)
+            print(f"Sold {sell} Paper Clips for ${sell*4}")
+            print("======================================================")
+        choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade,\n4 for Statistics,\nChoice: ", "str")
         if "1" in choice:
-            makepaperclip(money, paperclips, paperclipsper)
+            print("======================================================")
+            makepaperclip()
         elif "2" in choice:
-            buyrobot(robots)
+            print("======================================================")
+            buyrobot()
         elif "3" in choice:
-            upgrade(paperclips,paperclipsper, money)
+            print("======================================================")
+            upgrade()
         elif "4" in choice:
+            print("======================================================")
             printstats()
         else:
-            print("Select a valid choice")
+            print("Skipping Action")
+            print("======================================================")
 
 
         
