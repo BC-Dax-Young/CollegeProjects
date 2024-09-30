@@ -14,21 +14,21 @@ def getinput(message, inp):
         while True:
             if inp=="int":
                 try:
-                    response=int(input(f"{message}: "))
+                    response=int(input(f"{message}"))
                     break
                 except:
                     print("Error enter integers only!")
                     continue
             elif inp=="float":
                 try:
-                    response=float(input(f"{message}: "))
+                    response=float(input(f"{message} "))
                     break
                 except:
                     print("Error enter floats only!")
                     continue
             elif inp=="str":
                 try:
-                    response=str(input(f"{message}: "))
+                    response=str(input(f"{message} "))
                     break
                 except:
                     print("Error enter strings only!")
@@ -40,7 +40,7 @@ def typeout(message, response_wanted, responder):
         time.sleep(0.0125)
         sys.stdout.write(char)
     if response_wanted==1:
-        return getinput(f"{responder}: ", "str")
+        return getinput(f"{responder}", "str")
 
 
 #======================{[SELECTOR PROCEDURE]}======================
@@ -55,7 +55,6 @@ def selector():
               "Energy Bill", 
               "Circle Properties", 
               "Ball Pit",
-              "Gambling Game",
               "Driving Test",
               "Number Comparitor",
               "Water States",
@@ -81,7 +80,8 @@ def selector():
               "Teacher Code",
               "Email",
               "Seperator",
-              "Ascii EBCDIC"
+              "Ascii EBCDIC",
+              "Paper Clip Game"
               ]
     counter=1
     print("=======================\nAvailable/Allotted Programs: \n=======================")
@@ -528,34 +528,6 @@ def program34():
     print(dictionary[lookup])
 
 def program35():
-    #
-    def printstats():
-        typeout(f"You have {paperclips} Paper Clips", 0, "")
-        typeout(f"You have {money} Dollars ", 0, "")
-        typeout(f"You have sold {sold} Paper Clips", 0, "")
-        typeout(f"You have {robots} Robots making Paper Clips", 0, "")
-    #
-    def makepaperclip():
-        robotpc()
-        var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", 1, "You")
-        if "exit" in var:
-            return ""
-        paperclips+=paperclipsper
-        return ""
-        
-    #
-    def buyrobot():
-        robot+=1
-        typeout("Robot Purchased", 0, "")
-        robotpc()
-    #
-    def robotpc():
-        if robots!=0:
-            paperclips+=paperclipsper
-
-    typeout("Welcome to Paperclip game!", 0, "")
-    time.sleep(1)
-    typeout("Press any key to start!", 1, "")
     global paperclipsper
     global paperclips
     global money
@@ -566,14 +538,63 @@ def program35():
     money=500
     sold=0
     robots=0
+    #
+    def printstats():
+        typeout(f"You have {paperclips} Paper Clips\n", 0, "")
+        typeout(f"You have {money} Dollars\n", 0, "")
+        typeout(f"You have sold {sold} Paper Clips\n", 0, "")
+        typeout(f"You have {robots} Robots making Paper Clips\n", 0, "")
+    #
+    def makepaperclip(money, paperclips, paperclipsper):
+        while True:
+            robotpc(robots,paperclips,paperclipsper,money)
+            var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
+            if "exit" not in var:
+                
+                paperclips+=paperclipsper
+                print(f"Made {paperclipsper} Paper Clips.")
+                continue
+            else:
+                break
+        
+    #
+    def buyrobot(robots):
+        robot+=1
+        typeout("Robot Purchased", 0, "")
+        robotpc(robots,paperclips,paperclipsper,money)
+    #
+    def robotpc(robots,paperclips,paperclipsper,money):
+        if robots!=0:
+            paperclips+=paperclipsper
+            money=money-2
+    def upgrade(paperclips,paperclipsper, money):
+        robotpc(robots,paperclips,paperclipsper,money)
+        if money <= 50:
+            paperclipsper+=1
+            money-=50
+            print("Upgrade Purchased")
+        else:
+            print("Insufficient Funds")
+        
+
+    typeout("Welcome to Paperclip game!\n", 0, "")
+    time.sleep(1)
+    typeout("Press any key to start!\n", 1, "")
+
     printstats()
     while True:
-        choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot, ", 1, "str")
+        choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade\nChoice: ", "str")
         if "1" in choice:
-            makepaperclip()
+            makepaperclip(money, paperclips, paperclipsper)
         elif "2" in choice:
-            buyrobot()
+            buyrobot(robots)
         elif "3" in choice:
+            upgrade(paperclips,paperclipsper, money)
+        elif "4" in choice:
+            printstats()
+        else:
+            print("Select a valid choice")
+
 
         
 
