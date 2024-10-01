@@ -550,11 +550,10 @@ def program35():
         while True:
             robotpc()
             var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
-            if "exit" not in var:
-
-                money=money-2
+            if "exit" not in var and money >= 0:
+                money=money-1
                 paperclips+=paperclipsper
-                print(f"Made {paperclipsper} Paper Clips for $2.")
+                print(f"Made {paperclipsper} Paper Clip(s) for $1.")
                 continue
             else:
                 print("======================================================")
@@ -567,8 +566,9 @@ def program35():
         global money
         global sold
         global robots
-        robots+=1
-        typeout("Robot Purchased\n", 0, "")
+        buyamount=getinput("Enter Amount of robots to buy: ", "int")
+        robots+=buyamount    
+        typeout(f"{buyamount} Robot(s) Purchased\n", 0, "")
         robotpc()
         print("======================================================")
     #
@@ -590,7 +590,7 @@ def program35():
         global robots
         robotpc()
         if money >= 50:
-            paperclipsper+=1
+            paperclipsper+=50
             money-=50
             print("Upgrade Purchased")
         else:
@@ -608,7 +608,7 @@ def program35():
     global money
     global sold
     global robots
-    paperclipsper=1
+    paperclipsper=50
     paperclips=0
     money=500
     sold=0
@@ -617,10 +617,12 @@ def program35():
     print("======================================================")
     while True:
         if paperclips!=0:
-            sell=random.randint(1,paperclips)
+            sell=random.randint(50,50*random.randint(1, 25))
+            sold=sold+sell
             paperclips=paperclips-sell
-            money=money+(sell*4)
-            print(f"Sold {sell} Paper Clips for ${sell*4}")
+            stockmarket=np.random.uniform(0.10, 2.0)
+            money=money+((sell//50)*stockmarket)
+            print(f"Sold {sell} Paper Clips for ${((sell//50)*stockmarket)}")
             print("======================================================")
         choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade,\n4 for Statistics,\nChoice: ", "str")
         if "1" in choice:
@@ -635,6 +637,7 @@ def program35():
         elif "4" in choice:
             print("======================================================")
             printstats()
+            print("======================================================")
         else:
             print("Skipping Action")
             print("======================================================")
