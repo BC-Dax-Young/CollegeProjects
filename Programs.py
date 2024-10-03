@@ -235,251 +235,393 @@ def program9(): # Driving Test
             return "pass"
     print(PassFail(16)) # call function with minor faults and print result
 
-def program10(): # Compatispn program
+def program10():
+    # Number Comparator program
+    
+    # Get two integer inputs from the user
+    num1 = getinput("Enter Number 1: ", "int")
+    num2 = getinput("Enter Number 2: ", "int")
 
-    num1=getinput("Enter Number 1: ", "int")
-    num2=getinput("Enter Number 2: ", "int")
-
-    if num1<num2:
-        print(num2)
-    elif num1>num2:
-        print(num1)
+    # Compare the two numbers and print the result
+    if num1 < num2:
+        print(num2)  # If num1 is smaller, print num2
+    elif num1 > num2:
+        print(num1)  # If num1 is larger, print num1
     else:
-        print("They are the same")
+        print("They are the same")  # If both numbers are equal, print this message
 
 def program11():
-    temp=getinput("Temperature",0)
+    # Water States program
 
-    if temp>100:
-        print("Gas")
-    elif temp<100 and temp>0:
-        print("Liquid")
+    # Get temperature input from the user
+    temp = getinput("Temperature", 0)  # custom function for input validation
+
+    # Determine the state of water based on temperature
+    if temp > 100:
+        print("Gas")  # Water is in gaseous state (steam) above 100°C
+    elif temp < 100 and temp > 0:
+        print("Liquid")  # Water is liquid between 0°C and 100°C
     else:
-        print("Solid")
+        print("Solid")  # Water is solid (ice) at or below 0°C
 
 def program12():
-    job=input("Job: ").lower()
-    if job=="engineer":
+    # Career Quotes program
+
+    # Get the job input from the user and convert it to lowercase
+    job = input("Job: ").lower()
+
+    # Check the job input and print the corresponding quote
+    if job == "engineer":
         print("The engineer has been, and is, a maker of history.")
-    elif job=="developer":
+    elif job == "developer":
         print("Logical thinking, passion and perseverance is the paint on your palette.")
-    elif job=="analyst":
-        print("Seeing what other people can`t see gives you great vision.")
+    elif job == "analyst":
+        print("Seeing what other people can't see gives you great vision.")
     else:
+        # If the job doesn't match any predefined options, print a default message
         print("I'm sorry. We could not find a quote for your job.")
 
 def program13():
+    # Currency Converter program
 
-    currency=input("Enter Currency, GBP to USD, Euro, Yuan or Yen: ").lower()
-    amount=getinput("Enter amount: ", "int")
-    if currency=="usd":
+    # Get the target currency from user input and convert to lowercase
+    currency = input("Enter Currency, GBP to USD, Euro, Yuan or Yen: ").lower()
+
+    # Get the amount to convert from user input (as an integer)
+    amount = getinput("Enter amount: ", "int")
+
+    # Convert GBP to the specified currency
+    if currency == "usd":
         print(f"{amount} GBP = {amount*1.35} USD")
-    elif currency=="euro":
+    elif currency == "euro":
         print(f"{amount} GBP = {amount*1.20} Euro")
-    elif currency=="yuan":
+    elif currency == "yuan":
         print(f"{amount} GBP = {amount*9.37} Yuan")
-    elif currency=="euro":
+    elif currency == "yen":  # Fixed: changed "euro" to "yen"
         print(f"{amount} GBP = {amount*193.26} Yen")
     else:
         print("Invalid Currency")
 
 def program14():
     def dose():
-        doseage=getinput("Enter dosage: ", "int")
-        if doseage>10:
-            val= 3
+        # Get the dosage input from the user and convert it to an integer
+        doseage = getinput("Enter dosage: ", "int")
+        
+        # Determine the value based on the dosage
+        if doseage > 10:
+            val = 3
         else:
-            if doseage>2.5:
-                val= 2
+            if doseage > 2.5:
+                val = 2
             else:
-                if doseage>1:
-                    val= 1
+                if doseage > 1:
+                    val = 1
                 else:
-                    val= 0.5
+                    val = 0.5
+        
+        # Print the result
         print(f"For {doseage} nitrate dose {val} ml")
         
     dose()
 
 def program15():
-    def determine_grade(scores, breakpoints=[1,2,4,13,22,31,41,54,67,80], grades='U123456789'):
+    def determine_grade(scores, breakpoints=[1, 2, 4, 13, 22, 31, 41, 54, 67, 80], grades='U123456789'):
         while True:
             try:
+                # Find the position to insert the score in the breakpoints list
                 i = bisect.bisect(breakpoints, scores)
-                return grades[i], breakpoints[int(grades[i])]-scores
+                
+                # Return the corresponding grade and the points needed to reach the next breakpoint
+                return grades[i], breakpoints[int(grades[i])] - scores
                 break
             except:
+                # Continue the loop if an exception occurs
                 continue
-    grade=getinput("Enter Grade: ", "int")
-    dtrgrade, needed =determine_grade(grade)
+    
+    # Get the grade input from the user and convert it to an integer
+    grade = getinput("Enter Grade: ", "int")
+    
+    # Determine the grade and the points needed
+    dtrgrade, needed = determine_grade(grade)
+    
+    # Print the result
     print(f"You got a grade {dtrgrade}, you need {needed} more points.")
 
+
 def program16():
-    Hydrogen=["Hydrogen", "H", 1, 1.0078]
-    Lithium=["Lithium", "Li", 3, 6.9410]
-    Beryllium=["Berylium", "Be", 4, 1.0078]
-    element=input("Enter the element: ")
+    # Define the elements with their properties
+    Hydrogen = ["Hydrogen", "H", 1, 1.0078]
+    Lithium = ["Lithium", "Li", 3, 6.9410]
+    Beryllium = ["Beryllium", "Be", 4, 9.0122]
+    
+    # Get the element input from the user
+    element = input("Enter the element: ")
+    
+    # Check if the input element is in the Hydrogen list
     if element in Hydrogen:
-        print("Hydrogren Info:")
+        print("Hydrogen Info:")
         for i in Hydrogen:
             print(i)
+    # Check if the input element is in the Lithium list
     elif element in Lithium:
-        print("Hydrogren Info:")
+        print("Lithium Info:")
         for i in Lithium:
             print(i)
+    # Check if the input element is in the Beryllium list
     elif element in Beryllium:
         print("Beryllium Info:")
         for i in Beryllium:
             print(i)
 
 def program17():
-    day=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    shortday=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    char=["M", "Tu", "W", "Th", "F", "Sa", "Su"]
-    value=input("Enter day:").title()
+    # Define lists for full day names, short day names, and character representations
+    day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    shortday = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    char = ["M", "Tu", "W", "Th", "F", "Sa", "Su"]
+    
+    # Get the day input from the user and capitalize the first letter
+    value = input("Enter day:").title()
+    
+    # Check if the input value is in the full day names list
     if value in day:
-        daypos=day.index(value)
+        daypos = day.index(value)
         print(shortday[daypos])
         print(char[daypos])
+    # Check if the input value is in the short day names list
     elif value in shortday:
-        daypos=day.index(value)
+        daypos = shortday.index(value)
         print(day[daypos])
         print(char[daypos])
+    # Check if the input value is in the character representations list
     elif value in char:
-        daypos=day.index(value)
+        daypos = char.index(value)
         print(day[daypos])
         print(shortday[daypos])
+
 
 def program18():
-    purchasecost=getinput("Enter Cost", "float")
-    rounded=np.ceil(purchasecost)
-    diff=rounded-purchasecost
-    print(f"Item cost: {purchasecost},\nPaid Amount: {rounded},\n Saved to Savings: {diff}")
+    # Get the purchase cost input from the user and convert it to a float
+    purchasecost = getinput("Enter Cost", "float")
+    
+    # Round up the purchase cost to the nearest whole number
+    rounded = np.ceil(purchasecost)
+    
+    # Calculate the difference between the rounded amount and the actual purchase cost
+    diff = rounded - purchasecost
+    
+    # Print the item cost, the rounded amount paid, and the amount saved to savings
+    print(f"Item cost: {purchasecost},\nPaid Amount: {rounded},\nSaved to Savings: {diff}")
+
 
 def program19():
-    die=getinput("How many sides to your die?: ", "int")
-    print(f"Your {die} sided die rolled a {random.randint(1,die)}")
+    # Get the number of sides for the die from the user and convert it to an integer
+    die = getinput("How many sides to your die?: ", "int")
+    
+    # Roll the die and print the result
+    print(f"Your {die}-sided die rolled a {random.randint(1, die)}")
+
 
 def program20():
     def clamp():
-        num1=getinput("Enter Number 1: ", "int")
-        num2=getinput("Enter Number 2: ", "int")
+        # Get the first number input from the user and convert it to an integer
+        num1 = getinput("Enter Number 1: ", "int")
+        
+        # Get the second number input from the user and convert it to an integer
+        num2 = getinput("Enter Number 2: ", "int")
 
-        if num1<num2:
+        # Compare the two numbers and print the larger one
+        if num1 < num2:
             print(num2)
-        elif num1>num2:
+        elif num1 > num2:
             print(num1)
         else:
+            # If the numbers are equal, print either one
             print(num1)
+    
     clamp()
 
+
 def program21():
-    year=getinput("Enter year: ", "int")
-    if year % 4 == 0 or year % 400 == 0 and year %100 != 0:
+    # Get the year input from the user and convert it to an integer
+    year = getinput("Enter year: ", "int")
+    
+    # Check if the year is a leap year
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         print(f"{year} is a leap year!")
     else:
-       print(f"{year} is not a leap year.")
+        print(f"{year} is not a leap year.")
+
 
 def program22():
-    day=getinput("Enter Number of days: ", "int")
-    print(day//24)
+    # Get the number of hours input from the user and convert it to an integer
+    hours = getinput("Enter Number of hours: ", "int")
+    
+    # Calculate the number of full days
+    print(hours // 24)
 
 def program23():
+    # Prompt the user to roll the first dice and generate a random number between 1 and 6
     input("Roll dice one?")
-    dice1=random.randint(1,6)
+    dice1 = random.randint(1, 6)
     print(dice1)
+    
+    # Prompt the user to roll the second dice and generate a random number between 1 and 6
     input("Roll dice two?")
-    dice2=random.randint(1,6)
+    dice2 = random.randint(1, 6)
     print(dice2)
+    
+    # Prompt the user to roll the third dice and generate a random number between 1 and 6
     input("Roll dice three?")
-    dice3=random.randint(1,6)
+    dice3 = random.randint(1, 6)
     print(dice3)
-    def scoredice(d1,d2,d3):
-        if d1==d2==d3:
-            score=d1+d2+d3
-        elif d1==d2:
-            score=d1+d2
-            score-=d3
-        elif d3==d2:
-            score=d2+d3
-            score-=d1
-        elif d1==d3:
-            score=d1+d3
-            score-=d2
+    
+    def scoredice(d1, d2, d3):
+        # Check if all three dice have the same value
+        if d1 == d2 == d3:
+            score = d1 + d2 + d3
+        # Check if the first and second dice have the same value
+        elif d1 == d2:
+            score = d1 + d2
+            score -= d3
+        # Check if the second and third dice have the same value
+        elif d3 == d2:
+            score = d2 + d3
+            score -= d1
+        # Check if the first and third dice have the same value
+        elif d1 == d3:
+            score = d1 + d3
+            score -= d2
+        # If no dice have the same value, the score is 0
         else:
-            score=0
+            score = 0
         return score
-    print(scoredice(dice1,dice2,dice3))
+    
+    # Calculate and print the score based on the dice values
+    print(scoredice(dice1, dice2, dice3))
+
 
 def program24():
 
-    def div(val1,val2):
+    def div(val1, val2):
+        # Check if either value is zero
         if val1 == 0 or val2 == 0:
             return False
+        # Check if val1 is divisible by val2
         elif val1 % val2 == 0:
             return True
         else:
             return False
 
-    div(getinput("Enter Number 1: ", "int"),getinput("Enter Number 2: ", "int"))
+    # Get two integer inputs from the user and check divisibility
+    div(getinput("Enter Number 1: ", "int"), getinput("Enter Number 2: ", "int"))
+
 
 def program25():
-    age=getinput("Enter age: ", "float")
+    # Get the dog's age input from the user and convert it to a float
+    age = getinput("Enter age: ", "float")
+    
+    # Calculate the dog's age in human years for the first two years
     if age <= 2:
-        print(f"Your dog is {age*12} years old.")
+        print(f"Your dog is {age * 12} years old.")
+    # Calculate the dog's age in human years for ages greater than two years
     elif age > 2:
-        print(f"Your dog is {24+(age*6)-2}")
+        print(f"Your dog is {24 + (age - 2) * 6} years old.")
+
 
 def program26():
-    time=getinput("Enter number of minutes parked: ", "int")
-    points=1.5*time
-    price=1+(float(0.2)*time)
+    # Get the number of minutes parked from the user and convert it to an integer
+    time = getinput("Enter number of minutes parked: ", "int")
+    
+    # Calculate the points earned based on the time parked
+    points = 1.5 * time
+    
+    # Calculate the price to be paid based on the time parked
+    price = 1 + (0.2 * time)
+    
+    # Print the amount owed and the points earned
     print(f"You owe ${price} and earned {points} points")
+
 
 def program27():
     while True:
-        tweet=input("Tweet: ")
+        # Prompt the user to enter a tweet
+        tweet = input("Tweet: ")
+        
+        # Check if the tweet exceeds the maximum character limit
         if len(tweet) > 20:
             print("Tweet Exceeds maximum character limit!")
         else:
+            # Print the tweet if it is within the limit
             print(tweet)
 
+
 def program28():
-    forename=input("Enter Forename: ")
-    surname=input("Enter Surname: ")
-    print(forename[0].upper(),surname.upper())
+    # Get the forename input from the user
+    forename = input("Enter Forename: ")
+    
+    # Get the surname input from the user
+    surname = input("Enter Surname: ")
+    
+    # Print the initial of the forename in uppercase and the surname in uppercase
+    print(forename[0].upper(), surname.upper())
+
 
 def program29():
     def exists(inv, check):
-        if any(x in inv for x in check)==True:
+        # Check if any item in the check list exists in the inventory list
+        if any(x in inv for x in check) == True:
             print(True)
         else:
             print(False)
-    plrinv=["Sword" "Shield", "Potion", "Amulet"]
-    invcheck= ["Shield", "Potion", "Charm" ,"Bow"]
-    exists(plrinv,invcheck)
+    
+    # Define the player's inventory list
+    plrinv = ["Sword", "Shield", "Potion", "Amulet"]
+    
+    # Define the list of items to check
+    invcheck = ["Shield", "Potion", "Charm", "Bow"]
+    
+    # Check if any items in invcheck exist in plrinv
+    exists(plrinv, invcheck)
+
 
 def program30():
-    city1=input()
-    city2=input()
-    flight=city1[0:4].upper()+"-"+city2[0:4].upper()
+    # Get the first city input from the user
+    city1 = getinput("Enter First City: ", "str")
+    
+    # Get the second city input from the user
+    city2 = getinput("Enter Second City: ", "str")
+    
+    # Create the flight code by taking the first four letters of each city, converting to uppercase, and joining with a hyphen
+    flight = city1[0:4].upper() + "-" + city2[0:4].upper()
+    
+    # Print the flight code
     print(flight)
 
-def program31():
-    dax=["Dax","Aleckzander","Young"]
-    ebony=["Ebony-Jayne","Sapphire","Davies-Waterhouse"]
-    filip=["Filip"," ","Trzcinski"]
-    if " " in filip:
-        pos=filip.index(" ")
-        filiptrz=filip[2]
-        filip.insert(pos,"Z")
-        filip.insert(pos+1,filiptrz)
-    def abbreviate(list):
-        value=list[0][0]+list[1][0]+list[2][0]
-        print(value)
 
+def program31():
+    # Define lists for names
+    dax = ["Dax", "Aleckzander", "Young"]
+    ebony = ["Ebony-Jayne", "Sapphire", "Davies-Waterhouse"]
+    filip = ["Filip", " ", "Trzcinski"]
+    
+    # Check if there is a space in the 'filip' list and insert 'Z' in the appropriate position
+    if " " in filip:
+        pos = filip.index(" ")
+        filiptrz = filip
+        filip.insert(pos, "Z")
+        filip.insert(pos + 1, filiptrz)
+    
+    def abbreviate(name_list):
+        # Create an abbreviation by taking the first letter of each name part
+        abbreviation = name_list + name_list + name_list
+        print(abbreviation)
+    
+    # Abbreviate and print the names
     abbreviate(dax)
     abbreviate(ebony)
     abbreviate(filip)
+
+
 
 def program32():
     email=input("Enter email: ")
