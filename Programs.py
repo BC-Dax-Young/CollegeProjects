@@ -1,12 +1,12 @@
 
 #==========================={[IMPORTS]}============================
-
 import numpy as np # imports Numpy library for numerical operations
 import sys # imports system library for managing system operations
 import time # imports time library for controlling time operations
 import random # imports random
 import bisect # imports bisect for maintaining sorted lists
 import re # imports re
+from sympy import isprime
 
 #======================{[SHARED SUBROUTINES]}======================
 
@@ -68,21 +68,28 @@ def selector(): # main selector function
               "Dice", # 19
               "Clamp",# 20
               "Leap Year", #21
-              "Days",#23
-              "Dice Game",#24
-              "Division",#25
-              "Dogs life",#26
-              "Electric Car",#27
-              "Twitter",#28
-              "Initial and Surname",#29
-              "Inventory ",#30
-              "Flight",#31
-              "Teacher Code",#32
-              "Email",#33
-              "Seperator",#34
-              "Ascii EBCDIC",#35
-              "Paper Clip Game",#36
-              "Password"#37
+              "Days",#22
+              "Dice Game",#23
+              "Division",#24
+              "Dogs life",#25
+              "Electric Car",#26
+              "Twitter",#27
+              "Initial and Surname",#28
+              "Inventory ",#29
+              "Flight",#30
+              "Teacher Code",#31
+              "Email",#32
+              "Seperator",#33
+              "Ascii EBCDIC",#34
+              "Paper Clip Game",#35
+              "Time Tables",#36
+              "Factorial",#37
+              "Green Bottles",#38
+              "ASCII Art",#39
+              "Fizz Buzz",#40
+              "Scrabble",#41
+              "Passcode",#42
+              "Cassini Problem",#43
               ]
     counter=1 # counter for printing program numbers
     print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
@@ -624,67 +631,90 @@ def program31():
 
 
 def program32():
-    email=input("Enter email: ")
+    # Prompt the user to enter an email address
+    email = input("Enter email: ")
+    
+    # Check if the email contains both "@" and "."
     if "@" in email and "." in email:
+        # If both are present, print that the email is valid
         print("Email Valid")
     else:
+        # If either is missing, print that the email is invalid
         print("Email Invalid")
 
 def program33():
-    name=input("Enter name:").title()
-    split=name.split()
+    # Prompt the user to enter a name and convert it to title case
+    name = input("Enter name:").title()
+    
+    # Split the name into individual words
+    split = name.split()
+    
+    # Iterate through each word in the split name
     for i in split:
+        # Print each word in title case
         print(i.title())
+
             
 def program34():
-    dictionary={
-        "A":"Ascii: 65\n EBCDIC:193",
-        "B":"Ascii: 66\n EBCDIC:194",
-        "C":"Ascii: 67\n EBCDIC:195",
-        "D":"Ascii: 68\n EBCDIC:196",
-        "E":"Ascii: 69\n EBCDIC:197",
-        "F":"Ascii: 70\n EBCDIC:198",
-        "G":"Ascii: 71\n EBCDIC:199",
-        "H":"Ascii: 72\n EBCDIC:200",
-        "I":"Ascii: 73\n EBCDIC:201",
-        "J":"Ascii: 74\n EBCDIC:209",
-        "K":"Ascii: 75\n EBCDIC:210",
-        "L":"Ascii: 76\n EBCDIC:211",
-        "M":"Ascii: 77\n EBCDIC:212",
-        "N":"Ascii: 78\n EBCDIC:213",
-        "O":"Ascii: 79\n EBCDIC:214",
-        "P":"Ascii: 80\n EBCDIC:215",
-        "Q":"Ascii: 81\n EBCDIC:216",
-        "R":"Ascii: 82\n EBCDIC:217",
-        "S":"Ascii: 83\n EBCDIC:226",
-        "T":"Ascii: 84\n EBCDIC:227",
-        "U":"Ascii: 85\n EBCDIC:228",
-        "V":"Ascii: 86\n EBCDIC:229",
-        "W":"Ascii: 87\n EBCDIC:230",
-        "X":"Ascii: 88\n EBCDIC:231",
-        "Y":"Ascii: 89\n EBCDIC:232",
-        "Z":"Ascii: 90\n EBCDIC:233",
-        " ":"Ascii: 32\n EBCDIC:64"
-        }
+    # Define a dictionary with ASCII and EBCDIC values for each letter and space
+    dictionary = {
+        "A": "Ascii: 65\n EBCDIC:193",
+        "B": "Ascii: 66\n EBCDIC:194",
+        "C": "Ascii: 67\n EBCDIC:195",
+        "D": "Ascii: 68\n EBCDIC:196",
+        "E": "Ascii: 69\n EBCDIC:197",
+        "F": "Ascii: 70\n EBCDIC:198",
+        "G": "Ascii: 71\n EBCDIC:199",
+        "H": "Ascii: 72\n EBCDIC:200",
+        "I": "Ascii: 73\n EBCDIC:201",
+        "J": "Ascii: 74\n EBCDIC:209",
+        "K": "Ascii: 75\n EBCDIC:210",
+        "L": "Ascii: 76\n EBCDIC:211",
+        "M": "Ascii: 77\n EBCDIC:212",
+        "N": "Ascii: 78\n EBCDIC:213",
+        "O": "Ascii: 79\n EBCDIC:214",
+        "P": "Ascii: 80\n EBCDIC:215",
+        "Q": "Ascii: 81\n EBCDIC:216",
+        "R": "Ascii: 82\n EBCDIC:217",
+        "S": "Ascii: 83\n EBCDIC:226",
+        "T": "Ascii: 84\n EBCDIC:227",
+        "U": "Ascii: 85\n EBCDIC:228",
+        "V": "Ascii: 86\n EBCDIC:229",
+        "W": "Ascii: 87\n EBCDIC:230",
+        "X": "Ascii: 88\n EBCDIC:231",
+        "Y": "Ascii: 89\n EBCDIC:232",
+        "Z": "Ascii: 90\n EBCDIC:233",
+        " ": "Ascii: 32\n EBCDIC:64"
+    }
 
-    lookup=input("Enter Letter to lookup: ").upper()
+    # Prompt the user to enter a letter to look up
+    lookup = input("Enter Letter to lookup: ").upper()
+    
+    # Print the ASCII and EBCDIC values for the entered letter
     print(dictionary[lookup])
 
+
 def program35():
+    # Print a separator line
     print("======================================================")
 
-    #
+    # Function to print the current statistics
     def printstats():
         global paperclipsper
         global paperclips
         global money
         global sold
         global robots
+        # Print the number of paper clips
         typeout(f"You have {paperclips} Paper Clips\n", 0, "")
+        # Print the amount of money
         typeout(f"You have {money} Dollars\n", 0, "")
+        # Print the number of paper clips sold
         typeout(f"You have sold {sold} Paper Clips\n", 0, "")
+        # Print the number of robots making paper clips
         typeout(f"You have {robots} Robots making Paper Clips\n", 0, "")
-    #
+
+    # Function to make paper clips
     def makepaperclip():
         global paperclipsper
         global paperclips
@@ -692,81 +722,98 @@ def program35():
         global sold
         global robots
         while True:
+            # Call the robotpc function
             robotpc()
-            var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
+            # Prompt the user to make paper clips or exit
+            var = getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
             if "exit" not in var:
-
-                money=money-2
-                paperclips+=paperclipsper
+                # Deduct $2 from money and add paper clips
+                money = money - 2
+                paperclips += paperclipsper
                 print(f"Made {paperclipsper} Paper Clips for $2.")
                 continue
             else:
+                # Print a separator line and exit the loop
                 print("======================================================")
                 break
         
-    #
+    # Function to buy a robot
     def buyrobot():
         global paperclipsper
         global paperclips
         global money
         global sold
         global robots
-        robots+=1
+        # Increase the number of robots by 1
+        robots += 1
         typeout("Robot Purchased\n", 0, "")
+        # Call the robotpc function to update paper clips and money
         robotpc()
         print("======================================================")
-    #
+    
+    # Function to handle robot paper clip production
     def robotpc():
         global paperclipsper
         global paperclips
         global money
         global sold
         global robots
-        if robots!=0:
-            paperclips+=paperclipsper
-            money=money-2
+        if robots != 0:
+            # Increase paper clips and decrease money for each robot
+            paperclips += paperclipsper
+            money -= 2
 
+    # Function to upgrade paper clip production
     def upgrade():
         global paperclipsper
         global paperclips
         global money
         global sold
         global robots
+        # Call the robotpc function to update paper clips and money
         robotpc()
         if money >= 50:
-            paperclipsper+=1
-            money-=50
+            # Increase paper clips per production and decrease money
+            paperclipsper += 1
+            money -= 50
             print("Upgrade Purchased")
         else:
             print("Insufficient Funds")
             print("======================================================")
 
-        
-
+    # Welcome message and game initialization
     typeout("Welcome to Paperclip game!\n", 0, "")
     time.sleep(1)
     typeout("Press enter to start!", 1, "")
     print("======================================================")
+    
+    # Initialize global variables
     global paperclipsper
     global paperclips
     global money
     global sold
     global robots
-    paperclipsper=1
-    paperclips=0
-    money=500
-    sold=0
-    robots=0
+    paperclipsper = 1
+    paperclips = 0
+    money = 500
+    sold = 0
+    robots = 0
+    
+    # Print initial statistics
     printstats()
     print("======================================================")
+    
     while True:
-        if paperclips!=0:
-            sell=random.randint(1,paperclips)
-            paperclips=paperclips-sell
-            money=money+(sell*4)
-            print(f"Sold {sell} Paper Clips for ${sell*4}")
+        if paperclips != 0:
+            # Randomly sell some paper clips and update money
+            sell = random.randint(1, paperclips)
+            paperclips -= sell
+            money += sell * 4
+            print(f"Sold {sell} Paper Clips for ${sell * 4}")
             print("======================================================")
-        choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade,\n4 for Statistics,\nChoice: ", "str")
+        
+        # Prompt the user for their choice of action
+        choice = getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade,\n4 for Statistics,\nChoice: ", "str")
         if "1" in choice:
             print("======================================================")
             makepaperclip()
@@ -783,24 +830,146 @@ def program35():
             print("Skipping Action")
             print("======================================================")
 
+
 def program36():
-    while True:
-        password=getinput("Enter Password", "str")
-        ints=["1","2","3","4","5","6","7","8","9","0"]
-        antisymbols=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        for char in password:
-            if char.isupper()==True:
-                capital=True
-            if char in ints:
-                numbers=True
-            if char not in antisymbols:
-                symbols=True
-        if len(password)>=10:
-            length=True
-        if capital==True and (numbers==True or symbols==True)==True and length==True:
-            print("Your crap code works")
+    def TimesTable(x):
+        for counter in range(1, 13):
+            print(f"{counter} x {x} = {counter * x}")
+    TimesTable(getinput("Enter Number: ", "int"))
+
+def program37():
+    num = getinput("Enter Number: ", "int")
+    numbers = ""
+    
+    # Build the multiplication string
+    while num != 0:
+        
+        if numbers == "":
+            stringnum = str(num)
+            num -= 1
+            numbers = stringnum
+
+        else:
+
+            stringnum = str(num)
+            num -= 1
+            numbers = numbers + "*" + stringnum
+
+    
+    # Evaluate the multiplication string safely
+    evaluated = eval(numbers)
+    print(f"{numbers} = {evaluated}")
 
 
+def program38():
+    def lyrics(number, bottle):
+        print(f"{number} green {bottle} hanging on the wall,\n{number} green {bottle} hanging on the wall,\nAnd if one green bottle should accidentally fall\nThere'll be {number-1} green {bottle} hanging on the wall.")
+    number=10
+    bottle="bottles"
+    while number!=1:
+        lyrics(number, bottle)
+        number-=1
+    lyrics(1, "bottle")
+
+def program39():
+    name=getinput("Enter name: ", "str")
+    nameart=""
+    for x in name:
+        nameart=nameart+"|"+x.upper()
+    print("+-+-+-+-+-+-+-+-+-+-+-+-+")
+    print(nameart+"|")
+    print("+-+-+-+-+-+-+-+-+-+-+-+-+")
+
+def program40():
+    def fizz_buzz(n):
+        for i in range(1, n + 1):
+            if i % 3 == 0 and i % 5 == 0:
+                print("FizzBuzz")
+            elif i % 3 == 0:
+                print("Fizz")
+            elif i % 5 == 0:
+                print("Buzz")
+            else:
+                print(i)
+
+    fizz_buzz(getinput("Enter Number: ", "int"))
+
+def program41():
+    one=["E","A","I","O","N","R","T","L","S","U"]
+    two=["D","G"]
+    three=["B","C","M","P"]
+    four=["F","H","V","W","Y"]
+    five="K"
+    eight=["J","X"]
+    ten=["Q","Z"]
+    scrabble=getinput("Enter Word: ", "str")
+    score=0
+    for char in scrabble:
+        if char in one:
+            score+=1
+        elif char in two:
+            score+=2
+        elif char in three:
+            score+=3
+        elif char in four:
+            score+=4
+        elif char in five:
+            score+=5
+        elif char in eight:
+            score+=8
+        elif char in ten:
+            score+=10
+    print(f"You got {score}!")
+
+
+def program42():
+    passcode=""
+    password=getinput("Enter passcode: ", "str")
+    vowels=["A","E","I","O","U","a","e","i","o","u"]
+    for char in password:
+        if char in vowels:
+            num=random.randint(0,9)
+            passcode=passcode+str(num)
+    print(f"Your passcode is: {passcode}")
+    
+def program43():
+    binary=getinput("Enter binary: ", "str")
+    counter=0
+    for x in binary:
+        if x == "1":
+            counter+=1
+    if counter % 2 == 0:
+        print("Even")
+    else:
+        print("Odd")
+
+def program44():
+    def is_prime(num):
+        # Initialize a flag variable
+        flag = True
+
+        # Numbers less than 2 are not prime
+        if num < 2:
+            flag = False
+        else:
+            # Check for factors from 2 to num-1
+            for i in range(2, num):
+                if num % i == 0:
+                    flag = False
+                    break
+
+        # Return the result based on the flag variable
+        return flag
+
+    # Example usage
+    number = getinput("Enter Number: ", "int")
+    if is_prime(number):
+        print(f"{number} is a prime number")
+    else:
+        print(f"{number} is not a prime number")
+
+
+    
 
 
         
