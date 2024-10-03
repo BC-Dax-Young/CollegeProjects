@@ -1,111 +1,113 @@
 
 #==========================={[IMPORTS]}============================
 
-import numpy as np
-import sys
-import time
-import random
-import bisect 
-import re
+import numpy as np # imports Numpy library for numerical operations
+import sys # imports system library for managing system operations
+import time # imports time library for controlling time operations
+import random # imports random
+import bisect # imports bisect for maintaining sorted lists
+import re # imports re
+
 #======================{[SHARED SUBROUTINES]}======================
 
-def getinput(message, inp):
-        while True:
-            if inp=="int":
-                try:
-                    response=int(input(f"{message}"))
+def getinput(message, inp): # custom input function with input validation and input choice
+        while True: # loop until valid input is provided
+            if inp=="int": # check inp for int
+                try: # validates input
+                    response=int(input(f"{message}")) # set response as int input value
                     break
-                except:
-                    print("Error enter integers only!")
+                except: # catches exception and prints error message
+                    print("Error enter integers only!") # print error message
                     continue
-            elif inp=="float":
-                try:
-                    response=float(input(f"{message}"))
+            elif inp=="float": # check inp for float 
+                try: # validates input
+                    response=float(input(f"{message}")) # set response as float input value
                     break
-                except:
-                    print("Error enter floats only!")
+                except: # catches exception and prints error message
+                    print("Error enter floats only!") # print error message
                     continue
-            elif inp=="str":
-                try:
-                    response=str(input(f"{message}"))
+            elif inp=="str": # check inp for str
+                try: # validates input
+                    response=str(input(f"{message}")) # set response as string input value
                     break
-                except:
-                    print("Error enter strings only!")
+                except: # catches exception and prints error message
+                    print("Error enter strings only!") # print error message
                     continue
-        return response
+        return response # returns validated response
 
-def typeout(message, response_wanted, responder):
-    for char in message:
-        time.sleep(0.0125)
-        sys.stdout.write(char)
-    if response_wanted==1:
-        return getinput(f"{responder}", "str")
+def typeout(message, response_wanted, responder): # function to type out a message and wait for user input if response_wanted is 1
+    for char in message: # loop through each character in the message
+        time.sleep(0.0125) # pause for 0.0125 seconds
+        sys.stdout.write(char) # print character to console
+    if response_wanted==1: # check if response_wanted is 1
+        return getinput(f"{responder}", "str") # get user input if response_wanted is 1
 
 
 #======================{[SELECTOR PROCEDURE]}======================
 
-def selector():
-    global programs
-    programs=["Dice Program", 
-              "Temperature Converter", 
-              "Character Print", 
-              "Fishtank Volume", 
-              "Carpet Cost", 
-              "Energy Bill", 
-              "Circle Properties", 
-              "Ball Pit",
-              "Driving Test",
-              "Number Comparitor",
-              "Water States",
-              "Career Quotes",
-              "Currency Converter",
-              "Nitrate Problem",
-              "Exam Grade",
-              "Periodic Table",
-              "Day Format",
-              "Save the Change",
-              "Dice",
-              "Clamp",
-              "Leap Year",
-              "Days",
-              "Dice Game",
-              "Division",
-              "Dogs life",
-              "Electric Car",
-              "Twitter",
-              "Initial and Surname",
-              "Inventory ",
-              "Flight",
-              "Teacher Code",
-              "Email",
-              "Seperator",
-              "Ascii EBCDIC",
-              "Paper Clip Game"
+def selector(): # main selector function
+    global programs # global variable for storing available programs
+    programs=["Dice Program", # 1
+              "Temperature Converter", # 2
+              "Character Print", # 3
+              "Fishtank Volume", # 4
+              "Carpet Cost",  # 5
+              "Energy Bill",   # 6
+              "Circle Properties", # 7
+              "Ball Pit", # 8
+              "Driving Test", # 9
+              "Number Comparitor", # 10
+              "Water States", # 11
+              "Career Quotes", # 12
+              "Currency Converter", # 13
+              "Nitrate Problem", # 14
+              "Exam Grade", # 15
+              "Periodic Table", # 16
+              "Day Format", # 17
+              "Save the Change", # 18
+              "Dice", # 19
+              "Clamp",# 20
+              "Leap Year", #21
+              "Days",#23
+              "Dice Game",#24
+              "Division",#25
+              "Dogs life",#26
+              "Electric Car",#27
+              "Twitter",#28
+              "Initial and Surname",#29
+              "Inventory ",#30
+              "Flight",#31
+              "Teacher Code",#32
+              "Email",#33
+              "Seperator",#34
+              "Ascii EBCDIC",#35
+              "Paper Clip Game",#36
+              "Password"#37
               ]
-    counter=1
-    print("=======================\nAvailable/Allotted Programs: \n=======================")
-    for i in programs:
-        print(f"{counter}: {i}")
-        counter+=1
-    while True:
-        while True:
-            try: 
-                selection=str(input("Enter the list integer number to select the desired program: "))
-                break
-            except Exception as error:
+    counter=1 # counter for printing program numbers
+    print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
+    for i in programs: # loop through each program in the list
+        print(f"{counter}: {i}") # print program number and name
+        counter+=1 # increment counter
+    while True: # loop until valid selection is provided
+        while True: # loop until valid input is provided
+            try: # validates input
+                selection=str(input("Enter the list integer number to select the desired program: ")) # set selection as string input value
+                break 
+            except Exception as error: # catches exception and prints error message
                 print(f"Program has encoutered an error: {error}")
                 continue
-        program(selection)
+        program(selection) # call program function with selected program number
         break            
 
 #==================={[PROGRAM SELECTOR PROCEDURE]}===================
 
-def program(selection):
+def program(selection): # main program function
     try:
-        print(f"Program: {programs[int(selection)-1]}")
-        eval("program"+selection)()
-    except Exception as error:
-        print(f"{error}")
+        print(f"Program: {programs[int(selection)-1]}") # print selected program name
+        eval("program"+selection)() # call selected program function
+    except Exception as error: # catches exception and prints error message
+        print(f"{error}") # print error message
 
     '''
     if selection==1:
@@ -129,18 +131,18 @@ def program(selection):
     '''
 #============================={[PROGRAMS]}==========================
 
-def program1():
+def program1(): # Dice Program
     	print("ooooooooooo\no         o\no  #   #  o\no    #    o\no  #   #  o\no         o\nooooooooooo")
 
-def program2():
-    def f2c(F):
-        return (F-32)/1.8
-    def c2f(C):
-        return (C*1.8)+32
-    while True:
-        try:
-            while True:
-                unit=int(input("Enter the unit you want to convert to:\nC: 1\nF: 2\nEnter here: "))
+def program2(): # Conversion Program
+    def f2c(F): # function to convert Fahrenheit to Celsius
+        return (F-32)/1.8 # formula to convert Fahrenheit to Celsius
+    def c2f(C): # function to convert Celsius to Fahrenheit
+        return (C*1.8)+32 # formula to convert Celsius to Fahrenheit
+    while True: #   loop until valid input is provided
+        try: # validates input
+            while True: # loop until valid input is provided
+                unit=int(input("Enter the unit you want to convert to:\nC: 1\nF: 2\nEnter here: ")) # Get unit input
                 if unit==1:
                     break
                 elif unit==2:
@@ -157,83 +159,83 @@ def program2():
     elif unit==2:
         print(f2c(convert))
         
-def program3():
-    print("The digits are: 0123456789 \nThe characters are: abcdABCD@#! \nThe alphanumerics are: 0123456789 abcdABCD@#!")
+def program3(): # Characters printing program
+    print("The digits are: 0123456789 \nThe characters are: abcdABCD@#! \nThe alphanumerics are: 0123456789 abcdABCD@#!") # print all characters and digits
 
-def program4():
+def program4(): # Fishtank Volume program
     while True:
-        try:
-            h=int(input("Input height: "))
+        try: # validates input
+            h=int(input("Input height: ")) # Get unit input
             w=int(input("Input width: "))
             d=int(input("Input depth: "))
             break
-        except:
+        except: # catches exception and prints error message
             print("Error: Enter integers only!")
             continue
-    print(f"The volume is {(h*w*d)/1000}")
+    print(f"The volume is {(h*w*d)/1000}") # calculate and print the volume
         
-def program5():
-    while True:
-        try:
-            h=int(input("Input height: "))
+def program5(): # Carpet Cost program
+    while True: # loop until valid input is provided
+        try: # validates input
+            h=int(input("Input height: ")) # Get height input
             w=int(input("Input width: "))
-            c=int(input("Carped price in metres squared: "))
+            c=int(input("Carpet price in metres squared: ")) # Get carpet price input
             break
-        except:
+        except: # catches exception and prints error message
             print("Error: Enter integers only!")
             continue
-    print(f"The underlay price is ${(c*3)}")
-    print(f"The grippers price is ${(h*2 + w*2)}")
-    print(f"The total is ${(h*2 + w*2)+(c*3)}")
+    print(f"The underlay price is ${(c*3)}") # calculate and print the underlay cost
+    print(f"The grippers price is ${(h*2 + w*2)}") # calculate and print the grippers cost
+    print(f"The total is ${(h*2 + w*2)+(c*3)}") # calculate and print the total cost
     
-def program6():
-    while True:
-        try:
+def program6(): # Energy Bill program
+    while True: # loop until valid input is provided
+        try: # validates input
             u=int(input("Input Units Used: "))
             break
-        except:
+        except: # catches exception and prints error message
             print("Error: Enter integers only!")
             continue
-    print(f"The kWh is {(u*39.3*1.022)/3.6}")
-    print(f"The price is ${((u*39.3*1.022)/3.6)*2.84}")
+    print(f"The kWh is {(u*39.3*1.022)/3.6}") # calculate and print the kWh
+    print(f"The price is ${((u*39.3*1.022)/3.6)*2.84}") # calculate and print the price
     
-def program7():
+def program7(): # Circle Properties program
     while True:
         try:
-            dia=int(input("Input diamater: "))
-            arc=int(input("Input arc angle: "))
+            dia=int(input("Input diamater: ")) # get diameter input
+            arc=int(input("Input arc angle: ")) # get arc angle input
             break
-        except:
+        except: # catches exception and prints error message
             print("Error: Enter integers only!")
             continue
-    print(f"The radius is {(dia)/2}")
-    print(f"The area is {3.14*(dia/2)**2}")
-    print(f"The circumfrence is ${3.14*dia}")
-    print(f"The arc length is ${((3.14*dia)*arc)/360}")
+    print(f"The radius is {(dia)/2}") # calculate and print the radius
+    print(f"The area is {3.14*(dia/2)**2}") # calculate and print the area
+    print(f"The circumfrence is ${3.14*dia}") # calculate and print the circumfrence
+    print(f"The arc length is ${((3.14*dia)*arc)/360}") # calculate and print the arc length
     
-def program8():
-    while True:
-        try:
-            radius=int(input("Input radius: "))
-            h=int(input("Input height: "))
+def program8(): # Ball Pit program
+    while True: # loop until valid input is provided
+        try: # validates input
+            radius=int(input("Input radius: ")) # get radius input
+            h=int(input("Input height: ")) # get height input
             break
-        except:
+        except: # catches exception and prints error message
             print("Error: Enter integers only!")
             continue
-    print(f"The volume is {(4/3)*3.14*radius**3}")
-    print(f"The volume of a ball is {(4/3)*3.14*radius**3}")
-    print(f"The required amount of balls is {((4/3)*3.14*radius**3)/(4/3)*3.14*radius**3}")
+    print(f"The volume is {(4/3)*3.14*radius**3}") # calculate and print the volume
+    print(f"The volume of a ball is {(4/3)*3.14*radius**3}") # calculate and print the volume of a ball
+    print(f"The required amount of balls is {((4/3)*3.14*radius**3)/(4/3)*3.14*radius**3}") # calculate and print the required amount of balls
     
         
-def program9():
-    def PassFail(MinorFaults):
+def program9(): # Driving Test
+    def PassFail(MinorFaults): # function to determine pass or fail based on minor faults
         if MinorFaults < 16:
             return "fail"
         else:
             return "pass"
-    print(PassFail(16))
+    print(PassFail(16)) # call function with minor faults and print result
 
-def program10():
+def program10(): # Compatispn program
 
     num1=getinput("Enter Number 1: ", "int")
     num2=getinput("Enter Number 2: ", "int")
@@ -550,10 +552,11 @@ def program35():
         while True:
             robotpc()
             var=getinput(f"Press Enter to make {paperclipsper} Paper Clip or type exit to exit: ", "str")
-            if "exit" not in var and money >= 0:
-                money=money-1
+            if "exit" not in var:
+
+                money=money-2
                 paperclips+=paperclipsper
-                print(f"Made {paperclipsper} Paper Clip(s) for $1.")
+                print(f"Made {paperclipsper} Paper Clips for $2.")
                 continue
             else:
                 print("======================================================")
@@ -566,9 +569,8 @@ def program35():
         global money
         global sold
         global robots
-        buyamount=getinput("Enter Amount of robots to buy: ", "int")
-        robots+=buyamount    
-        typeout(f"{buyamount} Robot(s) Purchased\n", 0, "")
+        robots+=1
+        typeout("Robot Purchased\n", 0, "")
         robotpc()
         print("======================================================")
     #
@@ -590,7 +592,7 @@ def program35():
         global robots
         robotpc()
         if money >= 50:
-            paperclipsper+=50
+            paperclipsper+=1
             money-=50
             print("Upgrade Purchased")
         else:
@@ -608,7 +610,7 @@ def program35():
     global money
     global sold
     global robots
-    paperclipsper=50
+    paperclipsper=1
     paperclips=0
     money=500
     sold=0
@@ -617,12 +619,10 @@ def program35():
     print("======================================================")
     while True:
         if paperclips!=0:
-            sell=random.randint(50,50*random.randint(1, 25))
-            sold=sold+sell
+            sell=random.randint(1,paperclips)
             paperclips=paperclips-sell
-            stockmarket=np.random.uniform(0.10, 2.0)
-            money=money+((sell//50)*stockmarket)
-            print(f"Sold {sell} Paper Clips for ${((sell//50)*stockmarket)}")
+            money=money+(sell*4)
+            print(f"Sold {sell} Paper Clips for ${sell*4}")
             print("======================================================")
         choice=getinput("Enter your choice,\n1 for make a Paper Clip,\n2 for buy a robot,\n3 for Upgrade,\n4 for Statistics,\nChoice: ", "str")
         if "1" in choice:
@@ -637,10 +637,28 @@ def program35():
         elif "4" in choice:
             print("======================================================")
             printstats()
-            print("======================================================")
         else:
             print("Skipping Action")
             print("======================================================")
+
+def program36():
+    while True:
+        password=getinput("Enter Password", "str")
+        ints=["1","2","3","4","5","6","7","8","9","0"]
+        antisymbols=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        for char in password:
+            if char.isupper()==True:
+                capital=True
+            if char in ints:
+                numbers=True
+            if char not in antisymbols:
+                symbols=True
+        if len(password)>=10:
+            length=True
+        if capital==True and (numbers==True or symbols==True)==True and length==True:
+            print("Your crap code works")
+
+
 
 
         
