@@ -1,6 +1,7 @@
 
 #==========================={[IMPORTS]}============================
 
+from tkinter import CHORD
 import numpy as np # imports Numpy library for numerical operations
 import sys # imports system library for managing system operations
 import time # imports time library for controlling time operations
@@ -95,6 +96,7 @@ def selector(): # main selector function
               "Compount Interest",#45
               "Car Depreaciation",#46
               "Discount Counter",#47
+              "Lottery",#48
               ]
     counter=1 # counter for printing program numbers
     print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
@@ -1005,6 +1007,41 @@ def program47():
         input("Press Enter to skip a year")
 
 def program48():
+    print("Welcome to the lottery!\n30 numbers have been made\nand 3 have been chosen as winning numbers!")
+    counter=30
+    lotterynumbers=[]
+    while counter > 0:
+        lotterynumbers.append(counter)
+        counter-=1
+    counter=3
+    winnernumbers=[]
+    while counter>0:
+        winnernumbers.append(lotterynumbers[random.randint(0,29)])
+        counter-=1
+    random.shuffle(lotterynumbers)
+    for x in lotterynumbers:
+        typeout(f"{x}, ",0,"")
+    print("\n")
+    choice1=getinput("Enter Number 1: ", "str")
+    choice2=getinput("Enter Number 2: ", "str")
+    choice3=getinput("Enter Number 3: ", "str")
+    points=0
+    if choice1 in winnernumbers:
+        points+=1
+    if choice2 in winnernumbers:
+        points+=1
+    if choice3 in winnernumbers:
+        points+=1
+    if points==0:
+        print("Sorry you didnt win the Jackpot.")
+    elif points==1:
+        print("You got 1 number right!")
+    elif points==2:
+        print("You got 2 numbers right!")
+    elif points==3:
+        print("You got 3 numbers right!")
+
+
 
     
 
