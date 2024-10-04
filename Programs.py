@@ -1,12 +1,13 @@
 
 #==========================={[IMPORTS]}============================
+
 import numpy as np # imports Numpy library for numerical operations
 import sys # imports system library for managing system operations
 import time # imports time library for controlling time operations
 import random # imports random
 import bisect # imports bisect for maintaining sorted lists
 import re # imports re
-from sympy import isprime
+
 
 #======================{[SHARED SUBROUTINES]}======================
 
@@ -90,6 +91,10 @@ def selector(): # main selector function
               "Scrabble",#41
               "Passcode",#42
               "Cassini Problem",#43
+              "Prime test",#44
+              "Compount Interest",#45
+              "Car Depreaciation",#46
+              "Discount Counter",#47
               ]
     counter=1 # counter for printing program numbers
     print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
@@ -968,6 +973,38 @@ def program44():
     else:
         print(f"{number} is not a prime number")
 
+def program45():
+    balance=getinput("Enter Balance: ", "int")
+    interest=0.04
+    desiredbal=getinput("Enter Desired Balance: ", "int")
+    while not balance>=desiredbal:
+        print(f"Your balance is {balance}.")
+        balance=balance*(1+interest)
+        input("Press Enter to skip a year")
+
+def program46():
+    balance=getinput("Enter Value: ", "int")
+    desiredbal=getinput("Enter Resale Value: ", "int")
+    print(f"Your car Value is {balance}.")
+    balance=balance-(0.3*balance)
+    input("Press Enter to skip a year")
+    while balance>desiredbal:
+        print(f"Your car Value is {balance}.")
+        balance=balance-(0.2*balance)
+        input("Press Enter to skip a year")
+
+def program47():
+    balance=10
+    desiredbal=getinput("Enter Final Discount: ", "int")
+    print(f"Your current Discount is 0%.")
+    balance=balance-(0.5*balance)
+    input("Press Enter to skip a week")
+    while balance>desiredbal:
+        print(f"Your Discount Value is {balance}.")
+        balance=balance-(0.5*balance)
+        input("Press Enter to skip a year")
+
+def program48():
 
     
 
