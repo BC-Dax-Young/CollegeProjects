@@ -97,6 +97,7 @@ def selector(): # main selector function
               "Car Depreaciation",#46
               "Discount Counter",#47
               "Lottery",#48
+              "Password Checker",#49
               ]
     counter=1 # counter for printing program numbers
     print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
@@ -1040,6 +1041,36 @@ def program48():
         print("You got 2 numbers right!")
     elif points==3:
         print("You got 3 numbers right!")
+
+def program49():
+    # Python program to check validation of password
+    # Module of regular expression is used with search()
+    s = getinput("Enter a password, MUST contain Capitals, Numbers and symbols: ", "str")
+    l, u, p, d = 0, 0, 0, 0
+    if (len(s) >= 8):
+        for i in s:
+
+            # counting lowercase alphabets 
+            if (i.islower()):
+                l+=1            
+
+            # counting uppercase alphabets
+            if (i.isupper()):
+                u+=1            
+
+            # counting digits
+            if (i.isdigit()):
+                d+=1            
+
+            # counting the mentioned special characters
+            if(i=='@'or i=='$' or i=='_'):
+                p+=1           
+    if (l>=1 and u>=1 and p>=1 and d>=1 and l+p+u+d==len(s)):
+        print("Valid Password")
+    else:
+        print("Invalid Password")
+
+
 
 
 
