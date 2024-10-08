@@ -1,6 +1,8 @@
 
 #==========================={[IMPORTS]}============================
 
+from ast import Num
+from hmac import new
 from tkinter import CHORD
 import numpy as np # imports Numpy library for numerical operations
 import sys # imports system library for managing system operations
@@ -98,6 +100,7 @@ def selector(): # main selector function
               "Discount Counter",#47
               "Lottery",#48
               "Password Checker",#49
+              "Random Numbers",#50
               ]
     counter=1 # counter for printing program numbers
     print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
@@ -1070,6 +1073,19 @@ def program49():
     else:
         print("Invalid Password")
 
+def program50():
+    def makenum():
+        newnum1=random.randint(0,9)
+        newnum2=random.randint(0,9)
+        newnum=str(newnum1)+str(newnum2)
+        if newnum not in numbers:
+            return newnum
+    numbers=[]
+    counter = 6
+    while counter != 0:
+        numbers.append(makenum())
+        counter-=1
+    print(numbers)
 
 
 
