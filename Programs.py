@@ -1087,6 +1087,163 @@ def program50():
         counter-=1
     print(numbers)
 
+def program51():
+    num=random.randint(0,10)
+    while True:
+        guess=getinput("Enter guess: ", "int")
+        if guess == num:
+            print("Correct!")
+            break
+        else:
+            print("Incorrect!")
+
+def program52():
+    counter=0
+    num=random.ranint(1,100)
+    while True:
+        counter+=1
+        guess=getinput("Enter guess: ", "int")
+        ai=random.ranint(1,100)
+        if guess == num:
+            print(f"Correct, you guessed it in {counter}!")
+            break
+        else:
+            print("Incorrect!")
+        if ai == num:
+            print(f"Computer guessed right in {counter}!")
+        else:
+            print("Computer got it wrong")
+
+def program53():
+    username=getinput("Enter your name: ", "str")
+    dob=getinput("Enter Date of Birth (DD-MM-YYYY): ", "str")
+    year=dob[6:10]
+    print(f"Your Username is {username+year}")
+
+def program54():
+    while True:
+        meal=getinput("Enter Breakfast, Lunch or Dinner: ", "str").lower()
+        if "breakfast" in meal:
+            amount=getinput("Enter amount of food: ", "int")
+            while amount>0:
+                print("Hopper 1 Dispensed")
+                amount-=1
+        elif "lunch" in meal:
+            amount=getinput("Enter amount of food: ", "int")
+            while amount>0:
+                print("Hopper 2 Dispensed")
+                amount-=1
+        elif "dinner" in meal:
+            amount=getinput("Enter amount of food: ", "int")
+            while amount>0:
+                print("Hopper 1 + 2 Dispensed")
+                amount-=1
+        else:
+            print("Invalid Input!")
+
+def program55():
+    while True:
+        menu=getinput("1. Feet to Meters,\n2. Stones to Kilograms,\nWhat do you want to convert to: ", "int")
+        if menu == 1:
+            amount=getinput("Enter feet: ", "int")
+            print(f"{amount} feet is {amount*0.3048} meteres")
+        elif menu == 2:
+            amount=getinput("Enter Stones: ", "int")
+            print(f"{amount} stones is {amount*6.35029} meteres")
+
+def program56():
+    pin=getinput("Enter PIN: ", "int")
+    print("PIN Set")
+    counter=0
+    while counter!=3:
+        pinguess=getinput("Enter PIN: ", "int")
+        if pinguess==pin:
+            print("PIN Correct")
+            break
+        else:
+            print(f"PIN Invalid {3-counter} attempts left")
+            counter+=1
+            continue
+
+def program57():
+    prevnum=0
+    choice="abc"
+    counter=0
+    while choice!="":
+        num=getinput("Enter Number: ", "int")
+        counter+=1
+        total+=num
+        if prevnum<num:
+            prevnum=num
+    print(f"Highest Number: {prevnum}\nAverage num: {total/counter}")
+
+def program58():
+    def calculate_parking_charge(arrival_time, departure_time, is_disabled):
+        arrival_minutes =int(arrival_time[:2]) * 60 + int(arrival_time[3:])
+        departure_minutes= int(departure_time[:2]) * 60 + int(departure_time[3:])
+        total_minutes =departure_minutes - arrival_minutes
+        hours = total_minutes // 60
+        minutes = total_minutes % 60
+
+        if is_disabled:
+            charge = 0
+        else:
+            charge=hours*2+(1 if minutes > 0 else 0)
+    
+        return charge
+
+    arrival_time=getinput("Enter arrival time (HH:MM): ", "str")
+    departure_time =getinput("Enter departure time (HH:MM): ", "str")
+    is_disabled = getinput("Are you a disabled blue badge holder? (yes/no): ", "str").strip().lower() == 'yes'
+    charge = calculate_parking_charge(arrival_time, departure_time, is_disabled)
+    print(f"Total parking charge: £{charge}")
+
+def program59():
+    def get_computer_choice():
+        return random.choice(['rock', 'paper', 'scissors'])
+
+    def determine_winner(player_choice, computer_choice):
+        if player_choice == computer_choice:
+            return 'draw'
+        elif (player_choice=='rock' and computer_choice == 'scissors') or (player_choice=='scissors' and computer_choice == 'paper') or (player_choice=='paper' and computer_choice == 'rock'):
+            return 'player'
+        else:
+            return 'computer'
+
+    def display_score(player_score, computer_score):
+        print(f"Player Score: {player_score} | Computer Score: {computer_score}")
+
+    player_score = 0
+    computer_score = 0
+
+    while player_score < 10 and computer_score < 10:
+        player_choice = input("Enter your choice (rock, paper, scissors): ").strip().lower()
+        if player_choice not in ['rock', 'paper', 'scissors']:
+            print("Invalid choice. Please choose rock, paper, or scissors.")
+            continue
+        
+        computer_choice = get_computer_choice()
+        print(f"Computer chose: {computer_choice}")
+        
+        winner = determine_winner(player_choice, computer_choice)
+        if winner == 'player':
+            player_score += 1
+            print("You win this round!")
+        elif winner == 'computer':
+            computer_score += 1
+            print("Computer wins this round!")
+        else:
+            print("It's a draw!")
+        
+        display_score(player_score, computer_score)
+    
+    if player_score == 10:
+        print("Congratulations! You won the game!")
+    else:
+        print("Computer won the game. Better luck next time!")
+
+
+
 
 
 
