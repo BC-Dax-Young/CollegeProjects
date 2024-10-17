@@ -1294,7 +1294,38 @@ def program60():
         typeout(f"{line}\n", 0, "")
 
 def program61():
-    pass
+    inv=[]
+    while True:
+        while True:
+            choice=getinput("Choices:\nPickup Random Item: 1\nDrop Item: 2\nChoice: ", "int")
+            if not choice>0 and not choice<3:
+                print("Enter a valid choice!")
+                continue
+            else:
+                break
+        if choice==1:
+            randomitem=random.randint(1,5)
+            if randomitem==1:
+                item="Flower"
+            elif randomitem==2:
+                item="Sword"
+            elif randomitem==3:
+                item="Shield"
+            elif randomitem==4:
+                item="Potion"
+            elif randomitem==5:
+                item="Wand"
+            inv.append(item)
+        elif choice==2:
+            while True:
+                drop=getinput(f"Enter item to drop from list:\n{inv}\nChoice: ", "str") .strip().title() == ["Shield", "Flower", "Sword", "Potion", "Wand"]
+                if drop not in ["Shield", "Flower", "Sword", "Potion", "Wand"]:
+                    print("Item doesn't exist")
+                    continue
+                else:
+                    inv.remove(inv.index[choice])
+
+
 
 
 
