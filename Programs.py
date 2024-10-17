@@ -101,6 +101,51 @@ def selector(): # main selector function
               "Lottery",#48
               "Password Checker",#49
               "Random Numbers",#50
+              "Guesser",#51
+              "AI Guesser",#52
+              "Username Maker",#53
+              "Foods",#54
+              "Converter",#55
+              "PIN",#56
+              "Highest Number",#57
+              "Parking",#58
+              "Rock Paper Scissors",#59
+              "Line Printer",#60
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
+              "",#
+              "",# 
               ]
     counter=1 # counter for printing program numbers
     print("=======================\nAvailable/Allotted Programs: \n=======================") # print header
@@ -1241,6 +1286,15 @@ def program59():
         print("Congratulations! You won the game!")
     else:
         print("Computer won the game. Better luck next time!")
+
+def program60():
+    line=getinput("Enter line to output: ", "str")
+    amount=getinput("Enter how many times to output: ", "int")
+    for x in range(1, amount):
+        typeout(f"{line}\n", 0, "")
+
+def program61():
+    pass
 
 
 
