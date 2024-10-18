@@ -1294,36 +1294,67 @@ def program60():
         typeout(f"{line}\n", 0, "")
 
 def program61():
-    inv=[]
+    inventory = []
+
+    def pick(item):
+        inventory.append(item)
+        print(f'{item} added to the inventory.')
+
+    def drop(item):
+        if item in inventory:
+            inventory.remove(item)
+            print(f'{item} removed from the inventory.')
+        else:
+            print(f'{item} not found in the inventory.')
+
+    def pull():
+        if inventory:
+            item = random.choice(inventory)
+            print(f'Pulled item: {item}')
+        else:
+            print('Inventory is empty.')
+
+    def search():
+        if inventory:
+            print('Items in inventory:')
+            for item in inventory:
+                print(f'- {item}')
+        else:
+            print('Inventory is empty.')
+
+    pick('Sword')
+    pick('Shield')
+    search()
+    pull()
+    drop('Sword')
+    search()
+
+def program62():
+    note=[]
+    notes=0
+    while notes!=10:
+        note.append(getinput(f"Enter Note {notes+1}: ", "str"))
+        notes+=1
     while True:
-        while True:
-            choice=getinput("Choices:\nPickup Random Item: 1\nDrop Item: 2\nChoice: ", "int")
-            if not choice>0 and not choice<3:
-                print("Enter a valid choice!")
-                continue
-            else:
-                break
-        if choice==1:
-            randomitem=random.randint(1,5)
-            if randomitem==1:
-                item="Flower"
-            elif randomitem==2:
-                item="Sword"
-            elif randomitem==3:
-                item="Shield"
-            elif randomitem==4:
-                item="Potion"
-            elif randomitem==5:
-                item="Wand"
-            inv.append(item)
-        elif choice==2:
-            while True:
-                drop=getinput(f"Enter item to drop from list:\n{inv}\nChoice: ", "str") .strip().title() == ["Shield", "Flower", "Sword", "Potion", "Wand"]
-                if drop not in ["Shield", "Flower", "Sword", "Potion", "Wand"]:
-                    print("Item doesn't exist")
-                    continue
-                else:
-                    inv.remove(inv.index[choice])
+        pos=getinput("Enter number of note you want to overwrite: ", "int")-1
+        newnote=getinput(f"Enter Note {pos}: ", "str")
+        note.pop(pos)
+        note.insert(pos, newnote)
+        choice=getinput("Do you want to continue", "str").strip().lower()=="no"
+        if choice=="no":
+            print("Closing")
+            break
+        else:
+            counter=0
+            for x in note:
+                counter+=1
+                print(f"{counter}: {x}")
+            continue
+
+    
+
+
+
 
 
 
