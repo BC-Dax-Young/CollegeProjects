@@ -1351,26 +1351,67 @@ def program62():
                 print(f"{counter}: {x}")
             continue
 
-    
+def program63():
+    import random
 
+    def generate_creatures(planet_number):
+        creatures = ["lizards", "humanoids", "insects", "dog", "cat", "elephant", "giraffe", "penguin", "lion", "tiger", "bear", "dolphin", "koala"]
+        colors = ["red", "green", "blue"]
+        characteristics = ["happy", "sad", "angry", "excited", "tall", "short", "fast", "slow", "bright", "dark"]
 
+        random.seed(planet_number)
+        creature = random.choice(creatures)
+        color = random.choice(colors)
+        characteristic = random.choice(characteristics)
 
+        return f"{characteristic} {color} {creature}s"
+    while True:
+        planet_number = getinput("Enter planet number: ","int")
+        description = generate_creatures(planet_number)
+        print(description)
 
-
-
-
-
-
-
-
-    
-
-
-        
-
-
+def program64():
+    stations = [
+    "Brixton", "Stockwell", "Vauxhall", "Pimlico", 
+    "Victoria", "Green Park", "Oxford Circus", "Warren Street", 
+    "Euston", "King's Cross", "Highbury & Islington", 
+    "Finsbury Park", "Seven Sisters", "Tottenham Hale", 
+    "Blackhorse Road", "Walthamstow Central"
+    ]
+    for x in stations:
+        counter+=1
+        print(f"{counter}: {x}")
+    while True:
+        s1=getinput("Enter Station: ", "str").title()
+        if s1 in stations:
+            break
+        else:
+            print("Error! Station doesn't exist.")
+            continue
+    while True:
+        s2=getinput("Enter Station: ", "str").title()
+        if s2 in stations:
+            break
+        elif s2 == s1:
+            print("You cannot enter the same station: ")
+        else:
+            print("Error! Station doesn't exist.")
+            continue
+    pos1=stations.index(s1+1)
+    pos2=stations.index(s2+1)
+    if pos2 > pos1:
+        for x in stations:
+            count+=1
+            if count == pos2:
+                break
+        print(f"There are {count-pos1} stations between {s1} and {s2}")
+    elif pos1 > pos2:
+        for x in stations.reverse():
+            count+=1
+            if count == pos1:
+                break
+        print(f"There are {count-pos1} stations between {s2} and {s1}")
 
 #==================================================================
-
 
 selector()
