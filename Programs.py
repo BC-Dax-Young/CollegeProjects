@@ -1042,7 +1042,7 @@ def program46():
     while balance>desiredbal:
         print(f"Your car Value is {balance}.")
         balance=balance-(0.2*balance)
-        input("Press Enter to skip a year")
+        input("Press Enter to skip to the next   year")
 
 def program47():
     balance=10
@@ -1412,6 +1412,37 @@ def program64():
                 break
         print(f"There are {count-pos1} stations between {s2} and {s1}")
 
+def program65():
+    counter=1
+    days=["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eigth", "ninth", "tenth", "eleventh", "twelfth"]
+    while counter != 13:
+        print(f"On the {days[counter-1]} day of Christmas,\nMy true love gave to me,")
+        if counter==12:
+            print("Twelve drummers drumming,")
+        if counter>=11:
+            print("Eleven pipers piping,")
+        if counter>=10:
+            print("Ten lords a-leaping,")
+        if counter>=9:
+            print("Nine ladies dancing,")
+        if counter>=8:
+            print("Eight maids a-milking,")
+        if counter>=7:
+            print("Seven swans a-swimming,")
+        if counter>=6:
+            print("Six geese a-laying,")
+        if counter>=5:
+            print("Five golden rings,")
+        if counter>=4:
+            print("Four calling birds,")
+        if counter>=3:
+            print("Three French hens,")
+        if counter>=2:
+            print("Two turtle doves,")
+        if counter>=1:
+            print("And a partridge in a pear tree!")
+        counter+=1
+        
 #==================================================================
 
 selector()
