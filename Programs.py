@@ -1442,6 +1442,31 @@ def program65():
         if counter>=1:
             print("And a partridge in a pear tree!")
         counter+=1
+
+def program66():
+    while True:
+        scores=[]
+        name=getinput("Enter name: ", "str")
+        counter=0
+        while counter!=5:
+            n1=random.randint(1,20)
+            n2=random.randint(1,20)
+            answer=getinput(f"{n1} + {n2} = ", "int")
+            if answer == n1+n2:
+                print("Correct!")
+                score+=1
+            else:
+                print("Incorrect.")
+        print(f"{name} your score is: {score}")
+        templist=[[score, name]]
+        scores.append(templist)
+
+def program67():
+
+
+
+
+
         
 #==================================================================
 
