@@ -8,7 +8,6 @@ import random # imports random
 import bisect # imports bisect for maintaining sorted lists
 import re # imports re
 
-
 #======================{[SHARED SUBROUTINES]}======================
 
 def getinput(message, inp): # custom input function with input validation and input choice
