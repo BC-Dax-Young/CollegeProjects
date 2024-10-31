@@ -1,9 +1,6 @@
 
 #==========================={[IMPORTS]}============================
 
-from ast import Num
-from hmac import new
-from tkinter import CHORD
 import numpy as np # imports Numpy library for numerical operations
 import sys # imports system library for managing system operations
 import time # imports time library for controlling time operations
@@ -1462,6 +1459,30 @@ def program66():
         scores.append(templist)
 
 def program67():
+    tanks=[]
+    tanks_to_append=10
+    while tanks_to_append!=0:
+        while True:
+            x_pos=getinput("Enter X Position, 0-7: ", "int")
+            if x_pos < 0 or x_pos > 7:
+                print("Enter 0-7")
+                continue
+            else:
+                break
+        while True:
+            y_pos=getinput("Enter Y Position, 0-7: ", "int")
+            if x_pos < 0 or y_pos > 7:
+                print("Enter 0-7")
+                continue
+            else:
+                break
+        tanks.append([x_pos, y_pos])
+        tanks_to_append-=1
+    for x in range(1,100):
+        print(" ")
+    print("Console Cleared.")
+
+
 
 
 
